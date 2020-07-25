@@ -1,0 +1,52 @@
+@import "./text";
+@import "./colors";
+@import "./variables";
+
+.select-classes{
+    .title{
+        @include fluid-text($min_width, $max_width, $min_font, 24px, 700);
+    }
+    .student-classes-grid-box{
+        background: $body-background;
+        max-width: 650px;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    
+        .grid-box{
+            background-color: $white;
+            border-radius: 10px;
+            width: 122px;
+            height: 80px;
+            line-height: 80px;
+            margin: 10px;
+            border: 2px solid $white;
+            box-shadow: 0 2px 4px rgba(0,0,0,.12);
+            transition: all 0.2s;
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.12);
+            }
+            span{
+                color: $dark-grey;
+                @include fluid-text($min_width, $max_width, $min_font, 28px, 700);
+            }
+            sup{
+                opacity: .5;
+                @include fluid-text($min_width, $max_width, $min_font, 18px);
+                margin-left: 3px;
+            }
+        }
+
+        .active{
+            box-shadow: 0 0 0pt 2pt $primary-color;
+        }
+    }
+    .action-btn{
+        width: 450px;
+        max-width: 90%;
+        @include fluid-text($min_width, $max_width, $min_font, 18px);
+        color: $white;
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@public/*": ["./public/*"],
+      "@redux/*": ["./redux/*"],
+      "@utils/*": ["./utils/*"],
+      "@sampleData/*": ["./sampleData/*"],
+      "@styles/*": ["./styles/*"],
+      "@apolloX/*": ["./lib/*"]
+    },
+    "checkJs": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    ".next",
+    "sampleData",
+    "public"
+  ]
+}

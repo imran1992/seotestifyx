@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/Applications/Developer/React/Next/schoolxBranches/arfan_dev/public/styles/main.css" type="text/css" ?>
+
+      <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+      xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      <url><loc>https://schoolx.pk/about</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/apollo</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/classes/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/classes/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/classes</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/classlIst/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/contact-us</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/courses/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/classes/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/classes/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/classes</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/feedbacks/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/online-courses/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/online-courses/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/online-courses</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/online-courses/live/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/online-courses/view/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/lectureseries/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/lectureseries/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/lectureseries</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/lectureseries/view/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/notifications</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/profile/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/profile</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/profile/online-courses/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/subjects/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/subjects/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/subjects</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dashboard/users</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/dummy</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/enrollments</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/feedbacks/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/index copy</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/landingPage</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/courses</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/live/[slug] copy</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/live/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/mylectures</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/upcoming-classes</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/online-courses/view/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/lectureseries/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/lectureseries/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/lectureseries</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/lectureseries/view/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/live-classes</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/login</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/mcq/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/mcq/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/mcq</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/mcqs/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/mcqs</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/notifications</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onboarding/components/step1</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onboarding</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onlinecourse/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onlinecourse/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onlinecourse/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/onlinecourse</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/privacy-policy</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/profile/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/profile</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/profile/online-courses/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/profile/slug-profile</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/programs</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/register</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjectTests/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjectTests/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjectTests</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjects/add</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjects/edit/[slug]</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/subjects</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/termes</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/terms-of-service</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url><url><loc>https://schoolx.pk/users</loc>
+                
+                
+                
+                <lastmod>2020-07-06</lastmod>
+                </url></urlset>

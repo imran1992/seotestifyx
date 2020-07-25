@@ -1,0 +1,9 @@
+curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE1ODMwODkyOTcsImV4cCI6MTU4MzE3NTY5NywiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNWU0YTRmMjBjZmJkZWM3ZGYxNDdmMGU4IiwianRpIjoiOWMxY2U3ZGItNmMyNy00YmVjLTk3YjAtNDZiYTI1NjI2YTc0In0.mkpWZi15OwJqM-HE7hjOfwqjdvHqNKIRFwAlgtX62nY" -X PATCH -d '{"role":"admin"}' https://www.weteach.schoolx.pk/users/5e4c3ffba40eed0996545242
+
+
+curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE1ODM5Mzg0MDMsImV4cCI6MTU4NjUzMDQwMywiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNWU0YzNmZmJhNDBlZWQwOTk2NTQ1MjQyIiwianRpIjoiYWIzOWY2N2ItMWRlNS00ZWE0LTg0MzEtM2YyMGZiZjRkZTMzIn0.QONBMvX8xyW9CMuJcx_jmVbZ0DQI96XZor2_VjX-c_g" -X GET -d '{"phone":"03004132126"}' https://www.weteach.schoolx.pk/users
+
+
+curl -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE1ODM5Mzg0MDMsImV4cCI6MTU4NjUzMDQwMywiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNWU0YzNmZmJhNDBlZWQwOTk2NTQ1MjQyIiwianRpIjoiYWIzOWY2N2ItMWRlNS00ZWE0LTg0MzEtM2YyMGZiZjRkZTMzIn0.QONBMvX8xyW9CMuJcx_jmVbZ0DQI96XZor2_VjX-c_g" -X DELETE https://www.weteach.schoolx.pk/users/5e4a5118cfbdec7df147f0e9
+
+BzV9mUgV6etCbZp4SedK
