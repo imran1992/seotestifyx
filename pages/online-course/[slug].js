@@ -24,7 +24,7 @@ import { isEmpty, orderBy } from "lodash";
 import { useRouter } from "next/router";
 import Head from "next/head";
 //import { withApollo } from "@apolloX/apollo";
-import { initializeApollo } from "@apolloX/apollox";
+import { initializeApollo } from "@apolloX/apolloX";
 import ClassesSlider from "@components/UpComingClasses/ClassesSlider";
 import Perk from "@components/perk";
 import gql from "graphql-tag";
