@@ -6,7 +6,7 @@ import React, { useState, Fragment } from "react";
 import { useRouter } from "next/router";
 import { isEmpty, filter, orderBy } from "lodash";
 import { Rating } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { enrollToCourse } from "@utils/API";
 import { timeLefter, OurTimeShower, OurTimeShower2 } from "@utils/utilities";

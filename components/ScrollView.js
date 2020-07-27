@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Typography, Paper, Fab } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import { isEmpty } from "lodash";
 import {

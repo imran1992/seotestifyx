@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment, useRef } from "react";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
 import { getMobileOperatingSystem } from "@utils/utilities";
 import {

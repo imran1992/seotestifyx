@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { isEmpty, filter, orderBy } from "lodash";
 import useInput from "@components/useInput";
 import { Rating } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getLectures, getLectureSeries, enrollToCourse } from "@utils/API";
 import { timeLefter, OurTimeShower, OurTimeShower2 } from "@utils/utilities";

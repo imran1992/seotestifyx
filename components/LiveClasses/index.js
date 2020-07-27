@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Divider } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 import ClassesSlider from "@components/UpComingClasses/ClassesSlider";
 import CoursesSlider from "@components/Courses/CoursesSlider";

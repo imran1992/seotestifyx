@@ -24,7 +24,7 @@ import Slider from "react-slick";
 import { Rating } from "@material-ui/lab";
 import Head from "next/head";
 import { ScrollView2, ScrollView1 } from "@components/ScrollView";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   ExpandMore as ExpandMoreIcon,
   Close as CloseIcon,

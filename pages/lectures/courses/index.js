@@ -246,7 +246,7 @@ const AllCourses = (props) => {
     }
   }, [data]);
 
-  let filteredCoursesList = [...props.Courses];
+  let filteredCoursesList = props.Courses ? [...props.Courses] : [];
 
   if (activeTab === 1) {
     filteredCoursesList = filteredCoursesList.filter(

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { isEmpty, filter } from "lodash";
 import useTimer from "@components/useTimer";
 import { Rating } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { timeLefter, OurTimeShower, OurTimeShower2 } from "@utils/utilities";
 const truncate = (n, string) => {
   if (string.length <= n) {

@@ -1,7 +1,7 @@
 import React, { useState, createRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Typography, Paper, Fab } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Notifications as NotifIcon,
   ChevronRight,
