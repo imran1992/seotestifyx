@@ -1,11 +1,11 @@
 import { ActionType } from "../actions";
 import { SET_USER_CLASS } from "../actions/users";
 
-const InitialAppState = {
+export const InitialUserState = {
   user: {},
   selected_class: null,
 };
-export default (state = InitialAppState, { type, payload }) => {
+export default (state = InitialUserState, { type, payload }) => {
   switch (type) {
     case ActionType.LOGED_IN: {
       return {
@@ -14,8 +14,8 @@ export default (state = InitialAppState, { type, payload }) => {
       };
     }
     case ActionType.LOG_OUT: {
-      alert(1)
-      return InitialAppState;
+      alert(1);
+      return InitialUserState;
     }
     case SET_USER_CLASS: {
       return {

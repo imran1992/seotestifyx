@@ -1,5 +1,5 @@
 import { ActionType } from "../actions";
-const InitialAppState = {
+export const InitialAppState = {
   busy: false,
   allCources: [],
   tests: [],

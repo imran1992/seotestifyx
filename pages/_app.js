@@ -2,11 +2,8 @@ import React, { Fragment } from "react";
 //import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-//import { Provider } from "react-redux";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
-//import { PersistGate } from "redux-persist/integration/react";
-//import { useStore } from "@redux/store";
 import DashboardHeader from "@components/DashboardHeader";
 import Pixel from "@components/Pixel";
 import HeadTags from "@components/headTags";
@@ -25,10 +22,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-phone-input-2/lib/bootstrap.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
+
+//===============[Redux]=============================
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import { useStore } from "@redux/store";
+//===================================================
 const Arr = ["", "live", "login", "register", "termes"];
 const theme = createMuiTheme({});
 const App = ({ Component, pageProps, router }) => {
-  //const store = useStore();
+  const store = useStore(pageProps.initialReduxState);
+  const persistor = persistStore(store);
   const getmeta = () => {
     if (router) {
       if (router.pathname == "/") {
@@ -82,7 +87,7 @@ const App = ({ Component, pageProps, router }) => {
   // console.log(Helmet.title.toString(), 'ddddddddddd', Helmet.Helmet);
 
   return (
-    <Fragment>
+    <Provider store={store}>
       <Head>
         <HeadTags />
         <meta
@@ -98,33 +103,38 @@ const App = ({ Component, pageProps, router }) => {
       </Head>
       <Pixel name="FACEBOOK_PIXEL_1" />
       {typeof window !== "undefined" ? (
-        <ThemeProvider theme={theme}>
-          <div
-            className={
-              !Arr.includes(router.route.split("/")[1]) &&
-              !Arr.includes(router.route.split("/")[2])
-                ? "layout"
-                : ""
-            }
-          >
-            {/* {!Arr.includes(router.route.split("/")[1]) &&
+        <PersistGate
+          loading={<Component {...pageProps} />}
+          persistor={persistor}
+        >
+          <ThemeProvider theme={theme}>
+            <div
+              className={
+                !Arr.includes(router.route.split("/")[1]) &&
+                !Arr.includes(router.route.split("/")[2])
+                  ? "layout"
+                  : ""
+              }
+            >
+              {/* {!Arr.includes(router.route.split("/")[1]) &&
                 !Arr.includes(router.route.split("/")[2]) && (
                   )} */}
 
-            {router.route != "/online-class/live/[slug]" ? (
-              <DashboardHeader />
-            ) : null}
-            <Component {...pageProps} />
-            {router.route.split("/")[1] == "programs" ||
-            router.route.split("/")[1] == "classlIst"
-              ? null
-              : !Arr.includes(router.route.split("/")[1]) && <Footer />}
-          </div>
-        </ThemeProvider>
+              {router.route != "/online-class/live/[slug]" ? (
+                <DashboardHeader />
+              ) : null}
+              <Component {...pageProps} />
+              {router.route.split("/")[1] == "programs" ||
+              router.route.split("/")[1] == "classlIst"
+                ? null
+                : !Arr.includes(router.route.split("/")[1]) && <Footer />}
+            </div>
+          </ThemeProvider>
+        </PersistGate>
       ) : (
         <Component {...pageProps} />
       )}
-    </Fragment>
+    </Provider>
   );
 };
 export default App;
