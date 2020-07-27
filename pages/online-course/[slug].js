@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Typography, Chip, Button, Divider } from "@material-ui/core";
 import { useQuery } from "@apollo/react-hooks";
 import moment from "moment";
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Loader from "@components/shared/loader";
 import ShareButtons from "@components/ShareButtons";
 import { blue, grey } from "@material-ui/core/colors";
@@ -17,7 +17,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { isEmpty, orderBy } from "lodash";
 import { useRouter } from "next/router";
 import Head from "next/head";
-//import { withApollo } from "@apolloX/apollo";
+import { withApollo } from "@apolloX/apollo";
 import { initializeApollo } from "@apolloX/apolloX";
 import ClassesSlider from "@components/UpComingClasses/ClassesSlider";
 import Perk from "@components/perk";
@@ -386,16 +386,16 @@ const onlineCourse = ({ initialApolloState }) => {
   }
   `;
 
-  // const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
-  //   LECTURE,
-  //   {
-  //     variables: {
-  //       skip: 0,
-  //       first: 10,
-  //     },
-  //     notifyOnNetworkStatusChange: true,
-  //   }
-  // );
+  const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
+    LECTURE,
+    {
+      variables: {
+        skip: 0,
+        first: 10,
+      },
+      notifyOnNetworkStatusChange: true,
+    }
+  );
 
   const updateThisWeekClasses = (snap) => {
     var curr = new Date();
@@ -420,61 +420,61 @@ const onlineCourse = ({ initialApolloState }) => {
   };
   console.log("data", initialApolloState);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     const { findCourse } = data;
-  //     if (findCourse && findCourse["length"]) {
-  //       let updatedDataSource = { ...findCourse[0] };
-  //       updatedDataSource["lectures"] = orderBy(
-  //         updatedDataSource["lectures"],
-  //         (lecture) => new Date(lecture["startTime"])
-  //       );
-  //       if (
-  //         updatedDataSource["lectures"] &&
-  //         updatedDataSource["lectures"]["length"]
-  //       ) {
-  //         const lastLectStartTime =
-  //           updatedDataSource["lectures"][0]["startTime"];
-  //         updatedDataSource["startedOn"] = moment(lastLectStartTime).format(
-  //           "MMM DD"
-  //         );
-  //       }
-  //       updateDataSource(updatedDataSource);
-  //       if (
-  //         updatedDataSource["lectures"] &&
-  //         updatedDataSource["lectures"]["length"]
-  //       ) {
-  //         updateThisWeekClasses(updatedDataSource);
-  //       }
-  //     }
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      const { findCourse } = data;
+      if (findCourse && findCourse["length"]) {
+        let updatedDataSource = { ...findCourse[0] };
+        updatedDataSource["lectures"] = orderBy(
+          updatedDataSource["lectures"],
+          (lecture) => new Date(lecture["startTime"])
+        );
+        if (
+          updatedDataSource["lectures"] &&
+          updatedDataSource["lectures"]["length"]
+        ) {
+          const lastLectStartTime =
+            updatedDataSource["lectures"][0]["startTime"];
+          updatedDataSource["startedOn"] = moment(lastLectStartTime).format(
+            "MMM DD"
+          );
+        }
+        updateDataSource(updatedDataSource);
+        if (
+          updatedDataSource["lectures"] &&
+          updatedDataSource["lectures"]["length"]
+        ) {
+          updateThisWeekClasses(updatedDataSource);
+        }
+      }
+    }
+  }, [data]);
 
-  // const EnrollToCourse = () => {
-  //   if (isEmpty(user))
-  //     Router.push({
-  //       pathname: "/login",
-  //       query: { returnto: `/online-course/${slug}` },
-  //     });
-  //   else
-  //     enrollToCourse({
-  //       id: dataSource["_id"],
-  //       type: "course",
-  //     }).then(({ ok, data, problem }) => {
-  //       if (ok) {
-  //         let updatedDataSource = { ...dataSource };
-  //         updatedDataSource["subscribers"].push(user._id);
-  //         updateDataSource(updatedDataSource);
+  const EnrollToCourse = () => {
+    if (isEmpty(user))
+      Router.push({
+        pathname: "/login",
+        query: { returnto: `/online-course/${slug}` },
+      });
+    else
+      enrollToCourse({
+        id: dataSource["_id"],
+        type: "course",
+      }).then(({ ok, data, problem }) => {
+        if (ok) {
+          let updatedDataSource = { ...dataSource };
+          updatedDataSource["subscribers"].push(user._id);
+          updateDataSource(updatedDataSource);
 
-  //         setNotifMessageType("success");
-  //         setNotifMessage("Successfully Enrolled");
-  //       } else {
-  //         setNotifMessageType("error");
-  //         if (data) setNotifMessage(data.message || problem);
-  //         else setNotifMessage(problem);
-  //       }
-  //     });
-  // };
+          setNotifMessageType("success");
+          setNotifMessage("Successfully Enrolled");
+        } else {
+          setNotifMessageType("error");
+          if (data) setNotifMessage(data.message || problem);
+          else setNotifMessage(problem);
+        }
+      });
+  };
 
   return (
     <div className={"mainPageContainer"}>
@@ -961,5 +961,5 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
-export default onlineCourse;
-//export default withApollo(onlineCourse);
+//export default onlineCourse;
+export default withApollo(onlineCourse);

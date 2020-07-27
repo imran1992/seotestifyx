@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-//import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { createMuiTheme } from "@material-ui/core";
@@ -8,8 +7,6 @@ import DashboardHeader from "@components/DashboardHeader";
 import Pixel from "@components/Pixel";
 import HeadTags from "@components/headTags";
 import Footer from "@components/Footer";
-//import { DefaultSeo } from "next-seo";
-//import SEO from "../next-seo.config";
 import "@public/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "@components/shared/loader/styles.scss";
@@ -30,8 +27,15 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useStore } from "@redux/store";
 //===================================================
 const Arr = ["", "live", "login", "register", "termes"];
-const theme = createMuiTheme({});
-const App = ({ Component, pageProps, router }) => {
+const theme = createMuiTheme({
+  spacing: 4,
+  palette: {
+    primary: {
+      main: "#007bff",
+    },
+  }
+});
+export default ({ Component, pageProps, router }) => {
   const store = useStore(pageProps.initialReduxState);
   const persistor = persistStore(store);
   const getmeta = () => {
@@ -130,4 +134,4 @@ const App = ({ Component, pageProps, router }) => {
     </Provider>
   );
 };
-export default App;
+

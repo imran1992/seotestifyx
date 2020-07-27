@@ -21,7 +21,7 @@ import useInput from "@components/useInput";
 import LiveClasses from "@components/LiveClasses";
 import Notif from "@components/Notif";
 import Head from "next/head";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   ExpandMore as ExpandMoreIcon,
   Close as CloseIcon,
@@ -84,8 +84,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = (props) => {
-  const { courseId } = props;
+const Dashboard = ({ courseId}) => {
+  const dispatch = useDispatch();
+  // const [Timer] = useTimer("2020-03-19T11:45:00.000Z".replace("Z", ""), 90);
+  const classes =  useStyles();
+  const Router = useRouter();
   const { user } = useSelector(({ USER }) => USER);
 
   const ALL_LECTURE_SERIES = gql`
@@ -231,10 +234,6 @@ const Dashboard = (props) => {
     }
   `;
 
-  const dispatch = useDispatch();
-  // const [Timer] = useTimer("2020-03-19T11:45:00.000Z".replace("Z", ""), 90);
-  const classes = useStyles();
-  const Router = useRouter();
   const { pathname, query } = Router;
 
   /* New State Handling for Data */
@@ -346,11 +345,10 @@ const Dashboard = (props) => {
   }, [data]);
 
   useEffect(() => {
-    if(user.role == "teacher" || user.role == "admin"){
-      Router.push('/online-course')
+    if (user.role == "teacher" || user.role == "admin") {
+      Router.push("/online-course");
     }
     handleInputChange({ category: "courses" });
-
   }, []);
 
   useEffect(() => {
