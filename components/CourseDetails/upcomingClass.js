@@ -96,7 +96,6 @@ const useStyles = makeStyles((theme) => ({
 
 const UpcomingClass = (props) => {
   const classes = useStyles();
-
   const { data, onClick } = props;
 
   return (

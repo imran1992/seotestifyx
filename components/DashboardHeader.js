@@ -120,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const DashboardHeader = (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const classes = useStyles();
   const Router = useRouter();
   const { pathname, query, push, back } = Router;
@@ -134,7 +134,7 @@ const DashboardHeader = (props) => {
   const [notifMessageType, setNotifMessageType] = useState("error");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openChipTooltip, setOpenChipTooltip] = useState(false);
-  const { user } = useSelector(({ USER }) => USER);
+  //const { user } = useSelector(({ USER }) => USER);
   const { gql, appolo } = props;
   const { useQuery } = appolo;
 
@@ -153,17 +153,17 @@ const DashboardHeader = (props) => {
   };
 
   const goEndMeeting = () => {
-    if (user.role === "student") {
-      Router.push("/online-class");
-    } else {
-      endMeeting(slug).then((response) => {
-        const { ok, data, problem } = response;
-        if (ok) {
-          Router.push("/online-class");
-        } else if (data) alert(data.message || problem);
-        else alert(problem);
-      });
-    }
+    // if (user.role === "student") {
+    //   Router.push("/online-class");
+    // } else {
+    endMeeting(slug).then((response) => {
+      const { ok, data, problem } = response;
+      if (ok) {
+        Router.push("/online-class");
+      } else if (data) alert(data.message || problem);
+      else alert(problem);
+    });
+    //}
   };
 
   const CLASSES_QUERY = `
@@ -189,23 +189,22 @@ const DashboardHeader = (props) => {
   }, [data, pathname]);
 
   useEffect(() => {
-    if (user)
-      if (user.role) {
-        getUser(user._id).then((response) => {
-          const { ok, data, problem } = response;
-          if (ok) {
-            dispatch({ type: "LOGED_IN", payload: data });
-          } else {
-            setNotifMessageType("error");
-            if (data) setNotifMessage(data.message || problem);
-            else setNotifMessage(problem);
-          }
-        });
-      }
+    // if (user)
+    //   if (user.role) {
+    //     getUser(user._id).then((response) => {
+    //       const { ok, data, problem } = response;
+    //       if (ok) {
+    //         dispatch({ type: "LOGED_IN", payload: data });
+    //       } else {
+    //         setNotifMessageType("error");
+    //         if (data) setNotifMessage(data.message || problem);
+    //         else setNotifMessage(problem);
+    //       }
+    //     });
+    //   }
   }, []);
 
   const handleBreadCrumbClick = (event) => {
-
     event.preventDefault();
     localStorage.removeItem("selected-class");
     Router.push("/");
@@ -217,15 +216,18 @@ const DashboardHeader = (props) => {
     <header>
       <nav
         className={`navbar fixed-top  ${
-          user.role === "student" || !user.role ? "pl-0" : ""
+          // user.role === "student" || !user.role ? "pl-0" :
+          ""
         } navbar-expand-lg navbar-dark top-nav-collapse`}
       >
         <div
           style={{
-            width: user.role === "student" || !user.role ? "95%" : "100%",
+            //user.role === "student" || !user.role ? "95%" :
+            width: "100%",
           }}
           className={`container-fluid myHeader ${
-            user.role === "student" || !user.role ? "mx-auto" : ""
+            //user.role === "student" || !user.role ? "mx-auto" :
+            ""
           }`}
         >
           {!pathname.split("/")[2] === "live" && (
@@ -323,7 +325,7 @@ const DashboardHeader = (props) => {
           )}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              {user.role === "student" && (
+              {/* {user.role === "student" && (
                 <li className="nav-item ml-3">
                   <a
                     style={{ fontWeight: "bold" }}
@@ -345,8 +347,8 @@ const DashboardHeader = (props) => {
                     />
                   </a>
                 </li>
-              )}
-              {!pathname.split("/")[2] === "live" &&
+              )} */}
+              {/* {!pathname.split("/")[2] === "live" &&
                 user.role &&
                 user.role !== "student" && (
                   <li className="nav-item">
@@ -363,78 +365,75 @@ const DashboardHeader = (props) => {
                       Home
                     </a>
                   </li>
-                )}
-              {!user.role && (
-                <>
-                  <li className="nav-item">
-                    <a
-                      className={`nav-link${
-                        pathname === "/online-class" ? "active" : ""
-                      }`}
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (isEmpty(user)) {
-                          Router.push("/");
-                        } else {
-                          Router.push("/");
-                        }
+                )} */}
+
+              <>
+                <li className="nav-item">
+                  <a
+                    className={`nav-link${
+                      pathname === "/online-class" ? "active" : ""
+                    }`}
+                    href=""
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      Router.push("/");
+                    }}
+                  >
+                    <img src={"/images/logoN.png"} />
+                  </a>
+                </li>
+                {pathname == "/online-courses/[slug]" ? (
+                  <li>
+                    <Popper
+                      open={openChipTooltip}
+                      anchorEl={anchorEl}
+                      placement="bottom-end"
+                      disablePortal={false}
+                      modifiers={{
+                        flip: {
+                          enabled: true,
+                        },
+                        preventOverflow: {
+                          enabled: true,
+                          boundariesElement: "window",
+                        },
                       }}
                     >
-                      <img src={"/images/logoN.png"} />
-                    </a>
-                  </li>
-                  {pathname == "/online-courses/[slug]" ? (
-                    <li>
-                      <Popper
-                        open={openChipTooltip}
-                        anchorEl={anchorEl}
-                        placement="bottom-end"
-                        disablePortal={false}
-                        modifiers={{
-                          flip: {
-                            enabled: true,
-                          },
-                          preventOverflow: {
-                            enabled: true,
-                            boundariesElement: "window",
-                          },
-                        }}
+                      <ClickAwayListener
+                        onClickAway={() => setOpenChipTooltip(false)}
                       >
-                        <ClickAwayListener
-                          onClickAway={() => setOpenChipTooltip(false)}
-                        >
-                          <Paper className={classes.tooltipPlacementBottom}>
-                            <Button
-                              variant="outlined"
-                              color="primary"
-                              className={classes.tooltipBtn}
-                              onClick={(e)=>handleBreadCrumbClick(e)}
-                            >
-                              Change Course 2
-                            </Button>
-                          </Paper>
-                        </ClickAwayListener>
-                      </Popper>
+                        <Paper className={classes.tooltipPlacementBottom}>
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                            className={classes.tooltipBtn}
+                            onClick={(e) => handleBreadCrumbClick(e)}
+                          >
+                            Change Course 2
+                          </Button>
+                        </Paper>
+                      </ClickAwayListener>
+                    </Popper>
 
-                      <Chip
-                        innerRef={anchorRef}
-                        icon={<ClassIcon />}
-                        label={slctClass}
-                        clickable
-                        // disabled={!courseId}
-                        onDelete={(ev) => {
-                          setAnchorEl(ev.currentTarget);
-                          setOpenChipTooltip(!openChipTooltip);
-                        }}
-                        deleteIcon={<ArrowDown />}
-                        className={classes.activeCourseChip}
-                        color="secondary"
-                      />
-                    </li>
-                  ) : null}
-                </>
-              )}
+                    <Chip
+                      innerRef={anchorRef}
+                      icon={<ClassIcon />}
+                      label={slctClass}
+                      clickable
+                      // disabled={!courseId}
+                      onDelete={(ev) => {
+                        setAnchorEl(ev.currentTarget);
+                        setOpenChipTooltip(!openChipTooltip);
+                      }}
+                      deleteIcon={<ArrowDown />}
+                      className={classes.activeCourseChip}
+                      color="secondary"
+                    />
+                  </li>
+                ) : null}
+              </>
+
               {pathname.split("/")[2] === "live" && (
                 <li className="nav-item ml-5 endmeeting">
                   <a
@@ -445,112 +444,46 @@ const DashboardHeader = (props) => {
                       setDialogType("endmeeting");
                       setDialogOpen(true);
                     }}
-                  >
-                    {user.role === "student" ? "Leave class" : "End class"}
-                  </a>
+                  ></a>
                 </li>
               )}
             </ul>
-            {pathname.split("/")[2] === "live" ? null : !isEmpty(user) ? (
-              <ul className="navbar-nav nav-flex-icons">
-                {/* <li className="nav-item mr-3">
-                  <a
-                    className={`nav-link waves-effect ${
-                      pathname.split("/")[1] === "notifications" ? "active" : ""
-                    }`}
-                    href=""
-                    onClick={(e) => {
-                      e.preventDefault();
-                      Router.push("/notifications");
-                    }}
-                  >
-                    <i className="fa fa-bell" />
-                  </a>
-                  {user.notificationCount > 0 && (
-                    <span className="counter">{user.notificationCount}</span>
-                  )}
-                </li> */}
-                <li className="nav-item avatar dropdown">
-                  <a
-                    className={`nav-link dropdown-toggle waves-effect profile ${
-                      pathname.split("/")[1] === "profile" && user._id === slug
-                        ? "active"
-                        : ""
-                    }`}
-                    id="navbarDropdownMenuLink-5"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="true"
-                  >
-                    <img
-                      src={`/images/${user.role}.jpg`}
-                      className="img-fluid rounded-circle z-depth-0"
-                      alt="profile"
-                    />
-                  </a>
-                  <div
-                    className="dropdown-menu dropdown-menu-right dropdown-secondary"
-                    aria-labelledby="navbarDropdownMenuLink-5"
-                  >
-                    <a
-                      className="dropdown-item waves-effect waves-light"
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        Router.push(`/profile/${user._id}`);
-                      }}
-                    >
-                      Profile
-                    </a>
-                    <a
-                      className="dropdown-item waves-effect waves-light"
-                      href=""
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setDialogType("logout");
-                        setDialogOpen(true);
-                      }}
-                    >
-                      Log out
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            ) : (
-              <ul className="navbar-nav nav-flex-icons">
-                <li className="nav-item avatar dropdown">
-                  <a
-                    style={{
-                      background: "var(--schoolx-DefaultPrimaryColor)",
-                      marginRight: "1rem",
-                    }}
-                    className={"nav-link"}
-                    href
-                    onClick={(e) => {
-                      e.preventDefault();
-                      Router.push({ pathname: "/register", query });
-                    }}
-                  >
-                    Register
-                  </a>
-                </li>
-                <li className="nav-item avatar dropdown">
-                  <a
-                    style={{
-                      background: "var(--schoolx-DefaultPrimaryColor)",
-                    }}
-                    className={"nav-link"}
-                    href=""
-                    onClick={(e) => {
-                      e.preventDefault();
-                      Router.push("/login?returnto="+pathname.replace('[slug]',slug));
-                    }}
-                  >
-                    Login
-                  </a>
-                </li>
-              </ul>
-            )}
+
+            <ul className="navbar-nav nav-flex-icons">
+              <li className="nav-item avatar dropdown">
+                <a
+                  style={{
+                    background: "var(--schoolx-DefaultPrimaryColor)",
+                    marginRight: "1rem",
+                  }}
+                  className={"nav-link"}
+                  href
+                  onClick={(e) => {
+                    e.preventDefault();
+                    Router.push({ pathname: "/register", query });
+                  }}
+                >
+                  Register
+                </a>
+              </li>
+              <li className="nav-item avatar dropdown">
+                <a
+                  style={{
+                    background: "var(--schoolx-DefaultPrimaryColor)",
+                  }}
+                  className={"nav-link"}
+                  href=""
+                  onClick={(e) => {
+                    e.preventDefault();
+                    Router.push(
+                      "/login?returnto=" + pathname.replace("[slug]", slug)
+                    );
+                  }}
+                >
+                  Login
+                </a>
+              </li>
+            </ul>
           </div>
           <Drawer
             classes={{ paper: classes.paper }}
@@ -590,11 +523,7 @@ const DashboardHeader = (props) => {
                     <ListItemIcon>
                       <ExitToApp />
                     </ListItemIcon>
-                    <ListItemText
-                      primary={
-                        user.role === "student" ? "Leave class" : "End class"
-                      }
-                    />
+                    <ListItemText primary={"End class"} />
                   </ListItem>
                 ) : (
                   <Fragment>
@@ -610,74 +539,34 @@ const DashboardHeader = (props) => {
                       </ListItemIcon>
                       <ListItemText primary={"Home"} />
                     </ListItem> */}
-                    {!isEmpty(user) ? (
-                      <Fragment>
-                        <ListItem
-                          button
-                          onClick={() => {
-                            Router.push({ pathname: "/profile", query });
-                            setDrawerOpen(false);
-                          }}
-                        >
-                          <ListItemIcon>
-                            <Person style={{ color: "#fff" }} />
-                          </ListItemIcon>
-                          <ListItemText primary={"Profile"} />
-                        </ListItem>
-                        {/* <ListItem
-                          button
-                          onClick={() => {
-                            Router.push("/notifications");
-                            setDrawerOpen(false);
-                          }}
-                        >
-                          <ListItemIcon>
-                            <Notifications style={{ color: "#fff" }} />
-                          </ListItemIcon>
-                          <ListItemText primary={"Notification"} />
-                        </ListItem> */}
-                        <ListItem
-                          button
-                          onClick={() => {
-                            setDialogType("logout");
-                            setDialogOpen(true);
-                            setDrawerOpen(false);
-                          }}
-                        >
-                          <ListItemIcon>
-                            <PowerSettingsNew style={{ color: "#fff" }} />
-                          </ListItemIcon>
-                          <ListItemText primary={"Logout"} />
-                        </ListItem>
-                      </Fragment>
-                    ) : (
-                      <Fragment>
-                        <ListItem
-                          button
-                          onClick={() => {
-                            Router.push({ pathname: "/login", query });
-                            setDrawerOpen(false);
-                          }}
-                        >
-                          <ListItemIcon>
-                            <AccountCircle style={{ color: "#fff" }} />
-                          </ListItemIcon>
-                          <ListItemText primary={"Login"} />
-                        </ListItem>
-                        <ListItem
-                          button
-                          onClick={() => {
-                            Router.push({ pathname: "/register", query });
-                            setDrawerOpen(false);
-                          }}
-                        >
-                          <ListItemIcon>
-                            <PersonAdd style={{ color: "#fff" }} />
-                          </ListItemIcon>
-                          <ListItemText primary={"Register"} />
-                        </ListItem>
-                      </Fragment>
-                    )}
+
+                    <Fragment>
+                      <ListItem
+                        button
+                        onClick={() => {
+                          Router.push({ pathname: "/login", query });
+                          setDrawerOpen(false);
+                        }}
+                      >
+                        <ListItemIcon>
+                          <AccountCircle style={{ color: "#fff" }} />
+                        </ListItemIcon>
+                        <ListItemText primary={"Login"} />
+                      </ListItem>
+                      <ListItem
+                        button
+                        onClick={() => {
+                          Router.push({ pathname: "/register", query });
+                          setDrawerOpen(false);
+                        }}
+                      >
+                        <ListItemIcon>
+                          <PersonAdd style={{ color: "#fff" }} />
+                        </ListItemIcon>
+                        <ListItemText primary={"Register"} />
+                      </ListItem>
+                    </Fragment>
+
                     {typeof window !== "undefined" ? (
                       !!window.isNativeAppx ? (
                         <Fragment>
@@ -784,13 +673,10 @@ const DashboardHeader = (props) => {
       {/* Navbar */}
 
       {/* Sidebar */}
+{/*       
       <div
         className={`sidebar-fixed position-fixed ${
-          !user.role ||
-          user.role === "student" ||
-          pathname.includes("feedbacks")
-            ? "d-none"
-            : ""
+          pathname.includes("feedbacks") ? "d-none" : ""
         }`}
       >
         <a
@@ -825,7 +711,7 @@ const DashboardHeader = (props) => {
             }`}
           >
             <i className="fa fa-book mr-3" />
-            {user.role === "teacher" ? "My" : ""} Lectures
+            Lectures
           </a>
           <a
             href=""
@@ -838,101 +724,11 @@ const DashboardHeader = (props) => {
             }`}
           >
             <i className="fa fa-book mr-3" />
-            {user.role === "teacher" ? "My" : ""} Courses
+            Courses
           </a>
-
-          {user.role === "teacher" ? (
-            <a
-              href=""
-              onClick={(e) => {
-                e.preventDefault();
-                Router.push("/mcq");
-              }}
-              className={`list-group-item waves-effect ${
-                pathname.split("/")[1] === "mcq" ? "active" : ""
-              }`}
-            >
-              <i className="fa fa-tags mr-3" />
-              MCQs
-            </a>
-          ) : null}
-
-          {user.role === "teacher" ? (
-            <a
-              href=""
-              onClick={(e) => {
-                e.preventDefault();
-                Router.push("/subjectTests");
-              }}
-              className={`list-group-item waves-effect ${
-                pathname.split("/")[1] === "subjectTests" ? "active" : ""
-              }`}
-            >
-              <i className="fa fa-tags mr-3" />
-              Tests
-            </a>
-          ) : null}
-
-          {user.role === "admin" ? (
-            <a
-              href=""
-              onClick={(e) => {
-                e.preventDefault();
-                Router.push("/subjects");
-              }}
-              className={`list-group-item waves-effect ${
-                pathname.split("/")[1] === "subjects" ? "active" : ""
-              }`}
-            >
-              <i className="fa fa-tags mr-3" />
-              Subjects
-            </a>
-          ) : null}
-          {user.role === "admin" && (
-            <Fragment>
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  Router.push("/classes");
-                }}
-                className={`list-group-item waves-effect ${
-                  pathname.split("/")[1] === "classes" ? "active" : ""
-                }`}
-              >
-                <i className="fa fa-desktop mr-3" />
-                Classes
-              </a>
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  Router.push("/users");
-                }}
-                className={`list-group-item waves-effect ${
-                  pathname.split("/")[1] === "users" ? "active" : ""
-                }`}
-              >
-                <i className="fa fa-users mr-3" />
-                Users
-              </a>
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  Router.push("/enrollments");
-                }}
-                className={`list-group-item waves-effect ${
-                  pathname.split("/")[1] === "enrollments" ? "active" : ""
-                }`}
-              >
-                <i className="fa fa-users mr-3" />
-                Enrollments
-              </a>
-            </Fragment>
-          )}
         </div>
       </div>
+       */}
       {/* Sidebar */}
       <Dialog
         dialogOpen={dialogOpen}
@@ -941,8 +737,6 @@ const DashboardHeader = (props) => {
         dialogMessage={
           dialogType === "logout"
             ? "Do you really want to disconnect ?"
-            : user.role === "student"
-            ? "Do you really want to leave this lecture ? You can still come back."
             : "Do you really want to end the lecture ? All participants will be kicked."
         }
       />

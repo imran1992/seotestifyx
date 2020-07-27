@@ -1,14 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
-import {
-  Typography,
-  /* Fab, */ Chip,
-  Button,
-  Divider,
-} from "@material-ui/core";
-import { NextSeo } from "next-seo";
+import { Typography, Chip, Button, Divider } from "@material-ui/core";
 import { useQuery } from "@apollo/react-hooks";
 import moment from "moment";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import Loader from "@components/shared/loader";
 import ShareButtons from "@components/ShareButtons";
 import { blue, grey } from "@material-ui/core/colors";
@@ -338,7 +332,7 @@ const onlineCourse = ({ initialApolloState }) => {
   const [dataSource, updateDataSource] = useState({});
   const [shareStatus, setShareStatus] = useState(false);
   const [thisWeekLecturesList, updateThisWeekLecturesList] = useState([]);
-  const { user } = useSelector((state) => state["USER"]);
+  //const { user } = useSelector((state) => state["USER"]);
   const [notifMessage, setNotifMessage] = useState("");
   const [notifMessageType, setNotifMessageType] = useState("error");
   const [isLoading, setLoading] = useState(false);
@@ -456,35 +450,35 @@ const onlineCourse = ({ initialApolloState }) => {
   //   }
   // }, [data]);
 
-  const EnrollToCourse = () => {
-    if (isEmpty(user))
-      Router.push({
-        pathname: "/login",
-        query: { returnto: `/online-course/${slug}` },
-      });
-    else
-      enrollToCourse({
-        id: dataSource["_id"],
-        type: "course",
-      }).then(({ ok, data, problem }) => {
-        if (ok) {
-          let updatedDataSource = { ...dataSource };
-          updatedDataSource["subscribers"].push(user._id);
-          updateDataSource(updatedDataSource);
+  // const EnrollToCourse = () => {
+  //   if (isEmpty(user))
+  //     Router.push({
+  //       pathname: "/login",
+  //       query: { returnto: `/online-course/${slug}` },
+  //     });
+  //   else
+  //     enrollToCourse({
+  //       id: dataSource["_id"],
+  //       type: "course",
+  //     }).then(({ ok, data, problem }) => {
+  //       if (ok) {
+  //         let updatedDataSource = { ...dataSource };
+  //         updatedDataSource["subscribers"].push(user._id);
+  //         updateDataSource(updatedDataSource);
 
-          setNotifMessageType("success");
-          setNotifMessage("Successfully Enrolled");
-        } else {
-          setNotifMessageType("error");
-          if (data) setNotifMessage(data.message || problem);
-          else setNotifMessage(problem);
-        }
-      });
-  };
+  //         setNotifMessageType("success");
+  //         setNotifMessage("Successfully Enrolled");
+  //       } else {
+  //         setNotifMessageType("error");
+  //         if (data) setNotifMessage(data.message || problem);
+  //         else setNotifMessage(problem);
+  //       }
+  //     });
+  // };
 
   return (
     <div className={"mainPageContainer"}>
-      {/* {!isEmpty(initialApolloState[`Course:${slug}`]) &&
+      {!isEmpty(initialApolloState[`Course:${slug}`]) &&
       typeof initialApolloState[`Course:${slug}`]["name"] != undefined ? (
         <Head>
           <title>
@@ -535,7 +529,7 @@ const onlineCourse = ({ initialApolloState }) => {
           <meta property="educationalCredentialAwarded" content="380" />
           <meta property="hasCourseInstance" content="380" />
           <meta property="numberOfCredits" content="3" />
-          <meta property="occupationalCredentialAwarded" content="380" /> 
+          <meta property="occupationalCredentialAwarded" content="380" /> */}
         </Head>
       ) : (
         <Head>
@@ -543,7 +537,7 @@ const onlineCourse = ({ initialApolloState }) => {
             SchoolX, the leading online learning platform in Pakistan
           </title>
         </Head>
-      )} */}
+      )}
 
       {/* {!isEmpty(dataSource) && typeof dataSource["name"] != undefined && (
         <NextSeo
@@ -759,7 +753,7 @@ const onlineCourse = ({ initialApolloState }) => {
             >
               Share
             </Button>
-            <Button
+            {/* <Button
               variant="contained"
               color="default"
               startIcon={
@@ -778,7 +772,7 @@ const onlineCourse = ({ initialApolloState }) => {
                 dataSource["subscribers"].indexOf(user["_id"])) === -1
                 ? "Enroll"
                 : "Subscribed"}
-            </Button>
+            </Button> */}
           </div>
 
           {shareStatus && (
