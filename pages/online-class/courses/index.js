@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 // import nextCookie from "next-cookies";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { grey, purple } from "@material-ui/core/colors";
 import { useDispatch, useSelector } from "react-redux";
