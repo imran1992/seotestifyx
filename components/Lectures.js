@@ -2,32 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import filter from "lodash/filter";
-import orderBy from "lodash/orderBy";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import useInput from "@components/useInput";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Notif from "@components/Notif";
 import Rating from "@material-ui/lab/Rating";
 import Head from "next/head";
 
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getLectures,
-  getLecturesByTeacher,
-  updateLecture,
-  getLectureSeries,
-  updateLectureSerie
-} from "@utils/API";
 import { timeLefter } from "@utils/utilities";
-
-import { useQuery } from '@apollo/react-hooks'
-import { withApollo } from '../lib/apollo'
-import gql from 'graphql-tag';
+import { useQuery } from "@apollo/react-hooks";
+import { withApollo } from "../lib/apollo";
+import gql from "graphql-tag";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -42,7 +29,7 @@ const Dashboard = () => {
   const [notifMessage, setNotifMessage] = useState("");
   const [notifMessageType, setNotifMessageType] = useState("error");
 
-  const handleCopy = id => {
+  const handleCopy = (id) => {
     setCopied({ [id]: true });
     setTimeout(() => {
       setCopied({ [id]: false });
@@ -58,7 +45,7 @@ const Dashboard = () => {
   };
 
   const user = useSelector(({ USER }) => USER.user);
-  let qry = user.role == 'admin' ? `{}` : `{teacherId:"${user._id}"}`
+  let qry = user.role == "admin" ? `{}` : `{teacherId:"${user._id}"}`;
   const GET_LECTURES = gql`
   {
     findLecture(query: ${qry}) {
@@ -76,7 +63,7 @@ const Dashboard = () => {
       recorded_url,
     }
   }
-  `
+  `;
 
   const { error, data, fetchMore, networkStatus, client, variables } = useQuery(
     GET_LECTURES,
@@ -84,7 +71,7 @@ const Dashboard = () => {
       variables: { __skip: 0, __limit: 30 },
       // notifyOnNetworkStatusChange: true,
     }
-  )
+  );
 
   useEffect(() => {
     if (user.role === "student") {
@@ -93,11 +80,15 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    console.log(data, 'data list id ', variables)
+    console.log(data, "data list id ", variables);
     if (data) {
-      console.log(data, 'data of lectures')
+      console.log(data, "data of lectures");
       if (data.findLecture && data.findLecture) {
-        setfilteredLectures(data.findLecture.filter(item => timeLefter(item.startTime) != "Expired"))
+        setfilteredLectures(
+          data.findLecture.filter(
+            (item) => timeLefter(item.startTime) != "Expired"
+          )
+        );
         setLectures(data.findLecture);
       }
     }
@@ -107,10 +98,14 @@ const Dashboard = () => {
     if (value) {
       setfilteredLectures(lectures);
     } else {
-      setfilteredLectures(data.findLecture.filter(item => timeLefter(item.startTime) != "Expired"))
+      setfilteredLectures(
+        data.findLecture.filter(
+          (item) => timeLefter(item.startTime) != "Expired"
+        )
+      );
     }
-    setShowAll(value)
-  }
+    setShowAll(value);
+  };
 
   return (
     <main
@@ -124,7 +119,7 @@ const Dashboard = () => {
         <title>
           Lectures | SchoolX, the leading online learning platform in Pakistan
         </title>
-        <meta property="og:title" content='Courses & lectures' />
+        <meta property="og:title" content="Courses & lectures" />
         <meta
           property="og:description"
           content="SCHOOLX leading online learning platform"
@@ -137,16 +132,19 @@ const Dashboard = () => {
           notifMessageType={notifMessageType}
         />
 
-        <div className="row dashHeading rounded" style={{ justifyContent: 'space-between' }}>
+        <div
+          className="row dashHeading rounded"
+          style={{ justifyContent: "space-between" }}
+        >
           <div className="50vh margin-0 ">
             <h2 className="h6" style={{ marginTop: 16 }}>
               Lectures
-          </h2>
+            </h2>
           </div>
-          <div className="50vh margin-0" style={{ float: 'right' }}>
+          <div className="50vh margin-0" style={{ float: "right" }}>
             <button
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 Router.push("/online-class/add");
               }}
@@ -155,14 +153,20 @@ const Dashboard = () => {
               Add a lecture
             </button>
           </div>
-
         </div>
-        <div> <FormControlLabel
-          control={<Checkbox checked={showAll}
-            onChange={(e) => onChange(e.target.checked)}
-            name="show-all" />}
-          label="Show all Lectures"
-        /></div>
+        <div>
+          {" "}
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={showAll}
+                onChange={(e) => onChange(e.target.checked)}
+                name="show-all"
+              />
+            }
+            label="Show all Lectures"
+          />
+        </div>
         <div className="row pb-5">
           {!isEmpty(filteredLectures) ? (
             filteredLectures.length ? (
@@ -187,13 +191,13 @@ const Dashboard = () => {
                     endTime,
                     name,
                     whatsapp,
-                    image
+                    image,
                   },
                   index
                 ) => {
                   const foundLectures = filter(
                     lectures.data,
-                    found => found.lectureSeries === _id
+                    (found) => found.lectureSeries === _id
                   );
                   const specificLectures = foundLectures
                     ? foundLectures.length
@@ -203,15 +207,13 @@ const Dashboard = () => {
                     weekday: "long",
                     year: "numeric",
                     month: "long",
-                    day: "numeric"
+                    day: "numeric",
                   };
                   const date = new Date(startTime);
                   const startDate = `${date.toLocaleDateString(
                     "en-US",
                     options
                   )} ${date.toLocaleTimeString("en-US")}`;
-
-
 
                   return (
                     <div key={_id} className="col-md-12 mt-3">
@@ -224,7 +226,7 @@ const Dashboard = () => {
                           />
                           <a
                             href=""
-                            onClick={e => {
+                            onClick={(e) => {
                               e.preventDefault();
                               Router.push(`/online-class/${_id}`);
                             }}
@@ -237,7 +239,7 @@ const Dashboard = () => {
                             <div className="d-flex flex-row justify-content-between align-items-center">
                               <div className="d-flex flex-row align-items-center">
                                 <h6
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     e.preventDefault();
                                     Router.push(`/online-class/${_id}`);
                                   }}
@@ -257,9 +259,9 @@ const Dashboard = () => {
                               </div>
                               <div className="subscription d-flex flex-column">
                                 {teacherId === user._id &&
-                                  meetingInfo.running[0] === "false" ?
+                                meetingInfo.running[0] === "false" ? (
                                   <button
-                                    onClick={e => {
+                                    onClick={(e) => {
                                       e.preventDefault();
                                       Router.push(`/online-class/live/${_id}`);
                                     }}
@@ -267,7 +269,7 @@ const Dashboard = () => {
                                     style={{
                                       position: "relative",
                                       top: 5,
-                                      width: 110
+                                      width: 110,
                                     }}
                                     className="btn btn-sm btn-primary waves-effect m-0 px-3"
                                   >
@@ -275,9 +277,7 @@ const Dashboard = () => {
                                       ? "Restart lecture"
                                       : "Start lecture"}
                                   </button>
-                                  :
-                                  null
-                                }
+                                ) : null}
                               </div>
                             </div>
                             <div className="small justify-content-start align-items-center strong-grey-text">
@@ -292,7 +292,7 @@ const Dashboard = () => {
                                 style={{
                                   fontSize: ".9rem",
                                   position: "relative",
-                                  bottom: -2
+                                  bottom: -2,
                                 }}
                                 className="ml-3 text-left"
                                 value={owner ? owner.rating : ""}
@@ -313,7 +313,9 @@ const Dashboard = () => {
                               <span className="mx-2 strong-grey-text"> </span>
                               <div className="small justify-content-start align-items-center strong-grey-text py-1">
                                 <i className="fa fa-graduation-cap text-primary mr-2" />
-                                <span className="strong-grey-text">{`${classRoom ? classRoom.name : ""}`}</span>
+                                <span className="strong-grey-text">{`${
+                                  classRoom ? classRoom.name : ""
+                                }`}</span>
                               </div>
                             </div>
                             <div className="dark-grey-text w-100 px-3 text-justify small-plus">
@@ -396,8 +398,8 @@ const Dashboard = () => {
                                   {`Rs ${price.toLocaleString()}`}
                                 </span>
                               ) : (
-                                  <span className="text-primary">FREE</span>
-                                )}
+                                <span className="text-primary">FREE</span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -407,20 +409,20 @@ const Dashboard = () => {
                 }
               )
             ) : (
-                <div className={"alert alert-info w-100 my-3"} role="alert">
-                  There is no results based on your filters.
-                </div>
-              )
-          ) : (
-              <div className="w-100">
-                <div
-                  style={{ height: "100px" }}
-                  className="d-flex justify-content-center align-items-center w-100"
-                >
-                  <CircularProgress className="text-primary position-relative" />
-                </div>
+              <div className={"alert alert-info w-100 my-3"} role="alert">
+                There is no results based on your filters.
               </div>
-            )}
+            )
+          ) : (
+            <div className="w-100">
+              <div
+                style={{ height: "100px" }}
+                className="d-flex justify-content-center align-items-center w-100"
+              >
+                <CircularProgress className="text-primary position-relative" />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>

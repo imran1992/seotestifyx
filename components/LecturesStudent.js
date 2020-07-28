@@ -11,11 +11,6 @@ import {
   ExpansionPanelDetails,
   Typography,
   Modal,
-  Chip,
-  Popper,
-  Paper,
-  Button,
-  ClickAwayListener,
 } from "@material-ui/core";
 import useInput from "@components/useInput";
 import LiveClasses from "@components/LiveClasses";
@@ -439,7 +434,7 @@ const Dashboard = ({ courseId, initialData }) => {
   return (
     <div className={"lectureMainPageContainer"}>
       <Head>
-        {!isEmpty(initialData["findClassRoom"][0]) ? (
+        {initialData && !isEmpty(initialData["findClassRoom"][0]) ? (
           <Fragment>
             <title>{`${initialData["findClassRoom"][0]["name"]} Online Courses`}</title>
             <meta
