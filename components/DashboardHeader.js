@@ -148,7 +148,7 @@ const DashboardHeader = (props) => {
     setDrawerOpen(open);
   };
   const goLogOut = () => {
-    window.localStorage.removeItem("persist:root");
+    window.localStorage.removeItem("persist:primary");
     nextLogout();
   };
 

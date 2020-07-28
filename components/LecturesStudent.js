@@ -84,10 +84,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = ({ courseId}) => {
+const Dashboard = ({ courseId, initialData }) => {
   const dispatch = useDispatch();
   // const [Timer] = useTimer("2020-03-19T11:45:00.000Z".replace("Z", ""), 90);
-  const classes =  useStyles();
+  const classes = useStyles();
   const Router = useRouter();
   const { user } = useSelector(({ USER }) => USER);
 
@@ -439,22 +439,26 @@ const Dashboard = ({ courseId}) => {
   return (
     <div className={"lectureMainPageContainer"}>
       <Head>
-        {!isEmpty(classRoom) ? (
-          <>
-            <title>{`${classRoom["name"]} Online Courses`}</title>
+        {!isEmpty(initialData["findClassRoom"][0]) ? (
+          <Fragment>
+            <title>{`${initialData["findClassRoom"][0]["name"]} Online Courses`}</title>
             <meta
               property="og:title"
-              content={`${classRoom["name"]} Online Courses`}
+              content={`${initialData["findClassRoom"][0]["name"]} Online Courses`}
             />
-          </>
+            <meta
+              property="og:description:"
+              content={`${initialData["findClassRoom"][0]["description:"]}`}
+            />
+          </Fragment>
         ) : (
-          <>
+          <Fragment>
             <title>
               Lectures | SchoolX, the leading online learning platform in
               Pakistan
             </title>
             <meta property="og:title" content="Courses We Offer" />
-          </>
+          </Fragment>
         )}
         <meta
           name="description"
@@ -467,9 +471,6 @@ const Dashboard = ({ courseId}) => {
         <meta property="og:site_name" content="SchoolX" />
         <meta property="og:type" content="Courses &amp; lectures" />
       </Head>
-      {
-        // Timer
-      }
       <div className={"lecturePageBodyContainer"}>
         <Notif
           setNotifMessage={setNotifMessage}

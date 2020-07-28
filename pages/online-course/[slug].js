@@ -954,7 +954,7 @@ export const getServerSideProps = async (ctx) => {
     },
   });
   const initialApolloState = apolloClient.cache.extract();
-  console.log("ddddd", initialApolloState);
+  console.log("serverSideDataAtOnline-Courses: ", initialApolloState);
   return {
     props: {
       initialApolloState,

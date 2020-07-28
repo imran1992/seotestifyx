@@ -275,7 +275,7 @@ const AllCourses = (props) => {
 
   return (
     <div className={isLiveClassesPage ? "" : "lectureMainPageContainer"}>
-      <Head>
+      {/* <Head>
         <title>
           {activeTab === 0 ? "All Courses" : "Enrolled Courses"} | SchoolX, the
           leading online learning platform in Pakistan
@@ -297,7 +297,7 @@ const AllCourses = (props) => {
           property="og:image:alt"
           content="SchoolX | Online Learning Platform"
         />
-      </Head>
+      </Head> */}
 
       <div
         className={isLiveClassesPage ? "" : "lecturePageBodyContainer"}
@@ -356,6 +356,7 @@ const AllCourses = (props) => {
             />
             {subjectsList.map((subject, i) => (
               <SubjectSlide
+                key={"SubjectSlide" + i}
                 index={i + 1}
                 subject={subject["name"]}
                 isActive={activeSubjectFilter === i + 1}
