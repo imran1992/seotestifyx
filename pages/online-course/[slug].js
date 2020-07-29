@@ -490,13 +490,13 @@ const onlineCourse = ({ initialApolloState }) => {
               "@type": "Course",
               "name": "${initialApolloState["name"]}",
               "description": "${initialApolloState["description"]}",
+              "price":"Rs ${initialApolloState["price"]}",
               "instructor":{
                        "@type": "Person",
                        "name": "${initialApolloState["teacher"]["name"]}"
                        },
               "hasCourseInstance":{
                        "@type": "CourseInstance",
-                       "courseMode": "MOOC",
                        "courseMode": "online"
                           },
               "provider": {
