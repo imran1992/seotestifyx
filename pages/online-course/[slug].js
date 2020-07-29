@@ -593,15 +593,6 @@ const onlineCourse = ({ initialApolloState }) => {
           >
             <ArrowBackIos className={classes.goBackIcon} />
           </Fab> */}
-
-          {/* <meta property="courseMode" content="MOOC" />
-          <meta property="courseMode" content="online" />
-          <meta property="courseCode" content="380" />
-          <meta property="coursePrerequisites" content="380" />
-          <meta property="educationalCredentialAwarded" content="380" />
-          <meta property="hasCourseInstance" content="380" />
-          <meta property="numberOfCredits" content="3" />
-          <meta property="occupationalCredentialAwarded" content="380" /> */}
           <div className={`${classes.liveClassTimerContainer}`}>
             <img
               src={
