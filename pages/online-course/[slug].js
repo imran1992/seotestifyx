@@ -508,7 +508,7 @@ const onlineCourse = ({ initialApolloState }) => {
           </script>
           <meta
             property="og:url"
-            content={`https://schoolx.pk//online-course/${initialApolloState["_id"]}`}
+            content={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
           />
           <meta property="og:site_name" content="SchoolX" />
           <meta property="og:title" content={initialApolloState["name"]} />
@@ -516,12 +516,13 @@ const onlineCourse = ({ initialApolloState }) => {
             property="og:description"
             content={initialApolloState["description"]}
           />
+          <meta property="og:type" content="course" />
           {/*<meta property="og:image" content={dataSource["image_url"]} />
           <meta
             property="og:image:secure_url"
             content={dataSource["image_url"]}
           />
-          <meta property="og:type" content="course" />
+          
           <meta property="og:image:type" content="image" />
           <meta property="og:image:width" content="380" />
           <meta property="og:image:height" content="230" />
