@@ -512,6 +512,14 @@ const onlineCourse = ({ initialApolloState }) => {
           {
             //schoolxMetaData
           }
+          <link
+            rel="canonical"
+            href={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
+          />
+          <meta
+            name="description"
+            content={initialApolloState["description"]}
+          />
           <meta
             property="og:url"
             content={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
