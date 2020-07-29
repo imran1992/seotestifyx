@@ -538,46 +538,6 @@ const onlineCourse = ({ initialApolloState }) => {
           </title>
         </Head>
       )}
-
-      {/* {!isEmpty(dataSource) && typeof dataSource["name"] != undefined && (
-        <NextSeo
-          title={`Online classes schedule for ${dataSource["name"]} | schoolX.pk`}
-          description={`Learn Cambridge ${dataSource["name"]} online on schoolx.pk. Get syllabus, past exams papers, past exam pater solutions & tips and tricks to improve your grade.
-             Schoolx is a leading online learning platform in Pakistan providing online tuitions for Cambridge O Level, A Level, Matric, FSc and Entry exams for professional universities.`}
-          openGraph={{
-            url: `https://www.schoolx.pk/lectureseries/view/${dataSource["_id"]}`,
-            title: dataSource["name"],
-            description: `Learn Cambridge ${dataSource["name"]} online on schoolx.pk. Get syllabus, past exams papers, past exam pater solutions & tips and tricks to improve your grade.
-             Schoolx is a leading online learning platform in Pakistan providing online tuitions for Cambridge O Level, A Level, Matric, FSc and Entry exams for professional universities.`,
-            images: [
-              {
-                url: "https://www.example.ie/og-image-01.jpg",
-                width: 800,
-                height: 600,
-                alt: "Og Image Alt",
-              },
-              {
-                url: "https://www.example.ie/og-image-02.jpg",
-                width: 900,
-                height: 800,
-                alt: "Og Image Alt Second",
-              },
-              { url: "https://www.example.ie/og-image-03.jpg" },
-              { url: "https://www.example.ie/og-image-04.jpg" },
-            ],
-          }}
-        />
-      )} */}
-      {/* {!isEmpty(dataSource) && typeof dataSource["name"] != undefined && 
-        <Fragment>
-          <meta property="name" content={dataSource["name"]} />
-          <meta
-            property="description"
-            content={`Learn Cambridge ${dataSource["name"]} online on schoolx.pk. Get syllabus, past exams papers, past exam pater solutions & tips and tricks to improve your grade.
-             Schoolx is a leading online learning platform in Pakistan providing online tuitions for Cambridge O Level, A Level, Matric, FSc and Entry exams for professional universities.`}
-          />
-        </Fragment>
-      } */}
       {isLoading ? (
         <div
           style={{
@@ -592,7 +552,7 @@ const onlineCourse = ({ initialApolloState }) => {
       ) : !isEmpty(dataSource) && typeof dataSource["name"] != undefined ? (
         <div
           className={`pageBodyContainer ${classes.pageBody}`}
-          vocab="http://schema.org/"
+          //vocab="http://schema.org/"
         >
           {/* <Fab
             size="small"
@@ -656,7 +616,7 @@ const onlineCourse = ({ initialApolloState }) => {
           </div>
           <div
             className={`${classes.classInfoContainer}`}
-            typeof="Course"
+            //typeof="Course"
             // itemScope
             // itemType="http://schema.org/Course"
           >
@@ -664,7 +624,7 @@ const onlineCourse = ({ initialApolloState }) => {
               variant="h6"
               component="h1"
               className={`${classes.classRoomName}`}
-              property="name"
+              //property="name"
             >
               {dataSource["name"]}
             </Typography>
@@ -676,7 +636,7 @@ const onlineCourse = ({ initialApolloState }) => {
               variant="h5"
               component="h2"
               className={`${classes.h2}`}
-              property="name"
+              //property="name"
             >
               {dataSource["subject"] ? dataSource["subject"]["name"] : ""}
               <FiberManualRecord className={`${classes.subjectDot}`} />
@@ -722,17 +682,15 @@ const onlineCourse = ({ initialApolloState }) => {
             <div
               className={`${classes.startDateContainer}`}
               rel="hasCourseInstance"
-              typeof="CourseInstance"
+              //typeof="CourseInstance"
             >
-              <meta property="courseMode" content="MOOC" />
-              <meta property="courseMode" content="online" />
               <DateRange className={`${classes.startDateIcon}`} />
               {dataSource["startedOn"] ? (
                 <Typography
                   component="p"
                   className={`${classes.startDate}`}
-                  property="startDate"
-                  datatype="schema:date"
+                  //property="startDate"
+                  //datatype="schema:date"
                 >
                   {`Started on ${dataSource["startedOn"]}`}
                 </Typography>
