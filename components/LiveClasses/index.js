@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Typography, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
@@ -40,7 +40,13 @@ const liveClasses = (props) => {
   const { user } = useSelector((state) => state["USER"]);
   const [contentLoader, setContentLoader] = useState(true);
 
-  const { lectures, enrollToCourse, courseId, clName } = props;
+  const {
+    lectures,
+    enrollToCourse,
+    courseId,
+    clName,
+    initialDataLectures,
+  } = props;
 
   let subLectures = [];
 
@@ -66,10 +72,10 @@ const liveClasses = (props) => {
       ["asc"]
     );
 
-    myClasses.map((cls) => {
+    myClasses.forEach((cls) => {
       const { _id, subject, teacher } = cls;
       // console.log(cls, "cls");
-      cls["lectures"].map((lecture) => {
+      cls["lectures"].forEach((lecture) => {
         console.log(lecture["meetingInfo"]["running"][0]);
 
         if (lecture["meetingInfo"]["running"][0] === "true") {
@@ -86,10 +92,10 @@ const liveClasses = (props) => {
       ["asc"]
     );
 
-    myClasses.map((cls) => {
+    myClasses.forEach((cls) => {
       const { _id, subject, teacher } = cls;
       // console.log(cls, "cls");
-      cls["lectures"].map((lecture) => {
+      cls["lectures"].forEach((lecture) => {
         if (lecture["meetingInfo"]["running"][0] === "true") {
           // liveLectures.push({ ...lecture, subject, teacher, courseId: _id });
         } else {
@@ -98,7 +104,7 @@ const liveClasses = (props) => {
       });
     });
 
-    myLectures.map((lecture) => {
+    myLectures.forEach((lecture, idx) => {
       const { startTime } = lecture;
       const staringAt = new Date(startTime).getTime();
       const currentTime = new Date().getTime();
@@ -126,7 +132,7 @@ const liveClasses = (props) => {
       </h1>
 
       {!isEmpty(liveLectures) && (
-        <>
+        <Fragment>
           <SliderHeader
             title="Live Classes"
             subTitle="From the courses you subscribed to"
@@ -137,13 +143,12 @@ const liveClasses = (props) => {
             lectures={liveLectures}
             enrollToCourse={props.enrollToCourse}
           />
-        </>
+        </Fragment>
       )}
 
       {!isEmpty(user) && (
-        <>
+        <Fragment>
           <Divider className={classes.divider} />
-
           <SliderHeader
             title="Upcoming Classes"
             subTitle="From the courses you subscribed to"
@@ -170,18 +175,16 @@ const liveClasses = (props) => {
               There is no results based on your filters.
             </div>
           )}
-        </>
+        </Fragment>
       )}
 
       <Divider className={classes.divider} />
-
       <SliderHeader
         title="Courses"
         linkRef=""
         linkText=""
         onClickLinkText={() => localStorage.setItem("courseId", courseId)}
       />
-
       {contentLoader ? (
         <div
           style={{
@@ -202,6 +205,7 @@ const liveClasses = (props) => {
         <div style={{ marginTop: "1em" }}>
           <AllCourses
             Courses={props.lectures}
+            initialDataCourses={props.initialDataCourses}
             isLiveClassesPage={true}
             cId={courseId}
             enrollToCourse={enrollToCourse}
@@ -216,13 +220,13 @@ const liveClasses = (props) => {
   );
 };
 
-liveClasses.getInitialProps = async (ctx) => {
-  const { Authorization } = nextCookie(ctx);
-  if (ctx.req && !Authorization) {
-    ctx.res.writeHead(302, { Location: "/login" }).end();
-  } else if (!Authorization) {
-    document.location.pathname = "/login";
-  } else return { Authorization };
-};
+// liveClasses.getInitialProps = async (ctx) => {
+//   const { Authorization } = nextCookie(ctx);
+//   if (ctx.req && !Authorization) {
+//     ctx.res.writeHead(302, { Location: "/login" }).end();
+//   } else if (!Authorization) {
+//     document.location.pathname = "/login";
+//   } else return { Authorization };
+// };
 
 export default liveClasses;

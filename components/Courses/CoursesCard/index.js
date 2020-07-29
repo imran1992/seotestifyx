@@ -188,14 +188,12 @@ const CoursesCard = (props) => {
       onClick={() => {
         if (isUserEnrolled) Router.push(`/online-course/${_id}`);
       }}
-      vocab="http://schema.org/"
-      typeof="Course"
     >
       <div
         onClick={() => Router.push(`/online-course/${_id}`)}
-        typeof="CourseInstance"
+        //typeof="CourseInstance"
         itemScope
-        itemType="http://schema.org/Course"
+        //itemType="http://schema.org/Course"
       >
         <CardMedia
           className={classes.media}
@@ -209,18 +207,22 @@ const CoursesCard = (props) => {
         <CardContent className={classes.cardContentContainer}>
           <Typography
             gutterBottom
-            variant="h5"
-            component="h2"
+            variant="h1"
+            component="h1"
             className={`${classes.cardTitle} ${classes.fontBold}`}
             property="name"
           >
             {name}
           </Typography>
+          <div rel="hasCourseInstance" typeof="CourseInstance">
+            <meta property="courseMode" content="MOOC" />
+            <meta property="courseMode" content="online" />
+          </div>
           <div
             className={`${classes.subjectContainer}`}
             itemProp="aggregateRating"
             itemScope
-            itemType="http://schema.org/AggregateRating"
+            //itemType="http://schema.org/AggregateRating"
           >
             <p className={`${classes.subjectMain}`}>
               <span className={`${classes.rating}`} itemProp="ratingValue">
@@ -249,7 +251,7 @@ const CoursesCard = (props) => {
             className={`${classes.startingDateContainer}`}
             itemProp="aggregateRating"
             itemScope
-            itemType="http://schema.org/AggregateRating"
+            //itemType="http://schema.org/AggregateRating"
           >
             {/* {isStarted ? (
               <Chip

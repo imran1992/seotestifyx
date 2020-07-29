@@ -310,10 +310,6 @@ const Dashboard = ({ courseId, initialData }) => {
   );
 
   useEffect(() => {
-    // alert(1)
-
-    // console.log("34444443434", error, data, fetchMore, networkStatus, client);
-
     if (data) {
       if (data["findClassRoom"] && data["findClassRoom"]["length"]) {
         const { courses } = data["findClassRoom"][0];
@@ -763,6 +759,13 @@ const Dashboard = ({ courseId, initialData }) => {
             <LiveClasses
               courseId={courseId}
               lectures={lectures}
+              initialDataLectures={
+                initialData &&
+                initialData["findClassRoom"] &&
+                initialData["findClassRoom"].length
+                  ? initialData["findClassRoom"][0]["courses"]
+                  : []
+              }
               enrollToCourse={EnrollToCourse}
               clName={classRoom && classRoom != null ? classRoom.name : ""}
             />

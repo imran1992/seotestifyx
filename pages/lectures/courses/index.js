@@ -246,7 +246,10 @@ const AllCourses = (props) => {
     }
   }, [data]);
 
-  let filteredCoursesList = props.Courses ? [...props.Courses] : [];
+  let filteredCoursesList =
+    props.Courses && props.Courses.length
+      ? [...props.Courses]
+      : props.initialDataCourses;
 
   if (activeTab === 1) {
     filteredCoursesList = filteredCoursesList.filter(
@@ -378,10 +381,10 @@ const AllCourses = (props) => {
             <Loader showOnlyLoader={true} />
           </div>
         ) : (
-          <div className={classes.coursesCardsContainer}>
+          <div vocab="http://schema.org/" className={classes.coursesCardsContainer}>
             {!isEmpty(filteredCoursesList) ? (
               filteredCoursesList.map((course, i) => (
-                <div key={i} className={classes.coursesCard}>
+                <div typeof="Course" key={i} className={classes.coursesCard}>
                   <CoursesCard
                     key={course["_id"]}
                     isFree={
