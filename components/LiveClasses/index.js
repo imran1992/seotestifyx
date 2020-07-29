@@ -3,10 +3,8 @@ import { Typography, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 import ClassesSlider from "@components/UpComingClasses/ClassesSlider";
-import CoursesSlider from "@components/Courses/CoursesSlider";
 import LiveClassesSlider from "@components/LiveClasses/LiveClassesSlider";
 import SliderHeader from "@components/SliderHeader";
-import nextCookie from "next-cookies";
 import { isEmpty, orderBy, filter } from "lodash";
 import { useSelector } from "react-redux";
 import Loader from "@components/shared/loader";
@@ -123,7 +121,7 @@ const liveClasses = (props) => {
   }, [lectures]);
 
   console.log(liveLectures, "liveLectures liveLectures", clName);
-
+  console.log("serverSideDataAtOnline-Courses: ", initialDataLectures);
   return (
     <div className={classes.root}>
       <h1 variant="h4" className={`${classes.title} ${classes.fontBold}`}>
@@ -205,7 +203,7 @@ const liveClasses = (props) => {
         <div style={{ marginTop: "1em" }}>
           <AllCourses
             Courses={props.lectures}
-            initialDataCourses={props.initialDataCourses}
+            initialDataCourses={initialDataLectures}
             isLiveClassesPage={true}
             cId={courseId}
             enrollToCourse={enrollToCourse}

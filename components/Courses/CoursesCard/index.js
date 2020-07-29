@@ -165,7 +165,16 @@ const useStyles = makeStyles((theme) => ({
 
 const CoursesCard = (props) => {
   const { user, data, isFree, enrollToCourse } = props;
-  const { _id, name, subject, subscribers, teacher, price, image_url } = data;
+  const {
+    _id,
+    name,
+    subject,
+    subscribers,
+    teacher,
+    price,
+    image_url,
+    description,
+  } = data;
 
   console.log(data, "data list sdfdf");
 
@@ -207,13 +216,16 @@ const CoursesCard = (props) => {
         <CardContent className={classes.cardContentContainer}>
           <Typography
             gutterBottom
-            variant="h1"
-            component="h1"
+            variant="h5"
+            component="h2"
             className={`${classes.cardTitle} ${classes.fontBold}`}
             property="name"
           >
             {name}
           </Typography>
+          <span style={{ display:'none' }} property="description">
+            {description}
+          </span>
           <div rel="hasCourseInstance" typeof="CourseInstance">
             <meta property="courseMode" content="MOOC" />
             <meta property="courseMode" content="online" />
