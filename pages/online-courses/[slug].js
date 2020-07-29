@@ -18,7 +18,7 @@ export const getServerSideProps = async ({ req, res, query, params }) => {
   const ALL_LECTURE_SERIES = gql`
   {
     findClassRoom(query: { _id: "${
-      !isEmpty(user) && user["classRoom"] ? user["classRoom"] : courseId
+      !isEmpty(user) && user["classRoom"] ? user["classRoom"] : slug
     }" }) {
       _id
       name
