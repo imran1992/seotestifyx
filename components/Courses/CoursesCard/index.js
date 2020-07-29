@@ -223,12 +223,16 @@ const CoursesCard = (props) => {
           >
             {name}
           </Typography>
-          <span style={{ display:'none' }} property="description">
+          <span style={{ display: "none" }} property="description">
             {description}
           </span>
           <div rel="hasCourseInstance" typeof="CourseInstance">
             <meta property="courseMode" content="MOOC" />
             <meta property="courseMode" content="online" />
+          </div>
+          <div rel="provider" typeof="Organization">
+            <meta property="name" content="University of Technology - Eureka" />
+            <meta property="sameAs" content="http://www.ut-eureka.edu" />
           </div>
           <div
             className={`${classes.subjectContainer}`}

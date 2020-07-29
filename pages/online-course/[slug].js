@@ -17,7 +17,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { isEmpty, orderBy } from "lodash";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { withApollo } from "@apolloX/apollo";
+import { withApollo, initApolloClient } from "@apolloX/apollo";
 import { initializeApollo } from "@apolloX/apolloX";
 import ClassesSlider from "@components/UpComingClasses/ClassesSlider";
 import Perk from "@components/perk";
@@ -478,21 +478,27 @@ const onlineCourse = ({ initialApolloState }) => {
 
   return (
     <div className={"mainPageContainer"}>
-      {!isEmpty(initialApolloState[`Course:${slug}`]) &&
-      typeof initialApolloState[`Course:${slug}`]["name"] != undefined ? (
+      {initialApolloState ? (
         <Head>
           <title>
-            Online classes schedule for{" "}
-            {initialApolloState[`Course:${slug}`]["name"]} | schoolX.pk
+            Online classes schedule for {initialApolloState["name"]} |
+            schoolX.pk
           </title>
           <script type="application/ld+json">
             {`{
               "@context": "https://schema.org",
               "@type": "Course",
-              "name": "${initialApolloState[`Course:${slug}`]["name"]}",
-              "description": "${
-                initialApolloState[`Course:${slug}`]["description"]
-              }",
+              "name": "${initialApolloState["name"]}",
+              "description": "${initialApolloState["description"]}",
+              "instructor":{
+                       "@type": "Person",
+                       "name": "${initialApolloState["teacher"]["name"]}"
+                       },
+              "hasCourseInstance":{
+                       "@type": "CourseInstance",
+                       "courseMode": "MOOC",
+                       "courseMode": "online"
+                          },
               "provider": {
                        "@type": "Organization",
                        "name": "University of Technology - Eureka",
@@ -855,7 +861,7 @@ const onlineCourse = ({ initialApolloState }) => {
   );
 };
 export const getServerSideProps = async (ctx) => {
-  const apolloClient = initializeApollo();
+  const apolloClient = initApolloClient();
   const query = gql`
   {
     findCourse(query:{_id: "${ctx.params.slug}"}){
@@ -904,18 +910,26 @@ export const getServerSideProps = async (ctx) => {
     }
   }
   `;
-  await apolloClient.query({
+  const { data } = await apolloClient.query({
     query,
     variables: {
       skip: 0,
       first: 10,
     },
   });
-  const initialApolloState = apolloClient.cache.extract();
-  console.log("serverSideDataAtOnline-Courses: ", initialApolloState);
+  // await apolloClient.query({
+  //   query,
+  //   variables: {
+  //     skip: 0,
+  //     first: 10,
+  //   },
+  // });
+
+  console.log("serverSideDataAtOnline-Courses: ", data);
   return {
     props: {
-      initialApolloState,
+      initialApolloState:
+        data.findCourse && data.findCourse.length ? data.findCourse[0] : null,
     },
   };
 };
