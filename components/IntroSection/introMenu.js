@@ -235,8 +235,6 @@ const IntroSection = (props) => {
       }
       <div
         className={classes.mainContainer}
-        vocab="http://schema.org/"
-        typeof="Course"
       >
         <Grid container style={{ height: "100%" }}>
           <Grid
@@ -265,7 +263,6 @@ const IntroSection = (props) => {
                       slctdGroup == group_name ? classes.slctd_menu_item : ""
                       }`}
                     onClick={() => onChangeProgram(group_name)}
-                    property={group_name}
                   >
                     {group_name}
                   </p>
