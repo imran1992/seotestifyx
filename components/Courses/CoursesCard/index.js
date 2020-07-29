@@ -227,7 +227,6 @@ const CoursesCard = (props) => {
             {description}
           </span>
           <div rel="hasCourseInstance" typeof="CourseInstance">
-            <meta property="courseMode" content="MOOC" />
             <meta property="courseMode" content="online" />
           </div>
           <div rel="provider" typeof="Organization">

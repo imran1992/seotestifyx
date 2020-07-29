@@ -506,14 +506,17 @@ const onlineCourse = ({ initialApolloState }) => {
                           }
                }`}
           </script>
-          {/* <meta
+          <meta
             property="og:url"
-            content={`https://www.schoolx.pk/lectureseries/view/${dataSource["_id"]}`}
+            content={`https://schoolx.pk//online-course/${initialApolloState["_id"]}`}
           />
           <meta property="og:site_name" content="SchoolX" />
-
-          <meta property="og:title" content={dataSource["name"]} />
-          <meta property="og:image" content={dataSource["image_url"]} />
+          <meta property="og:title" content={initialApolloState["name"]} />
+          <meta
+            property="og:description"
+            content={initialApolloState["description"]}
+          />
+          {/*<meta property="og:image" content={dataSource["image_url"]} />
           <meta
             property="og:image:secure_url"
             content={dataSource["image_url"]}
