@@ -332,7 +332,7 @@ const onlineCourse = ({ initialApolloState }) => {
   const [dataSource, updateDataSource] = useState({});
   const [shareStatus, setShareStatus] = useState(false);
   const [thisWeekLecturesList, updateThisWeekLecturesList] = useState([]);
-  //const { user } = useSelector((state) => state["USER"]);
+  const { user } = useSelector((state) => state["USER"]);
   const [notifMessage, setNotifMessage] = useState("");
   const [notifMessageType, setNotifMessageType] = useState("error");
   const [isLoading, setLoading] = useState(false);
@@ -418,7 +418,7 @@ const onlineCourse = ({ initialApolloState }) => {
 
     updateThisWeekLecturesList(updatedList);
   };
-  console.log("data", initialApolloState);
+  //console.log("data", initialApolloState);
 
   useEffect(() => {
     if (data) {
@@ -548,7 +548,7 @@ const onlineCourse = ({ initialApolloState }) => {
           </title>
         </Head>
       )}
-      {isLoading ? (
+      {loading || isLoading ? (
         <div
           style={{
             display: "flex",
@@ -721,7 +721,7 @@ const onlineCourse = ({ initialApolloState }) => {
             >
               Share
             </Button>
-            {/* <Button
+            <Button
               variant="contained"
               color="default"
               startIcon={
@@ -740,22 +740,20 @@ const onlineCourse = ({ initialApolloState }) => {
                 dataSource["subscribers"].indexOf(user["_id"])) === -1
                 ? "Enroll"
                 : "Subscribed"}
-            </Button> */}
+            </Button>
           </div>
 
           {shareStatus && (
-            <>
+            <Fragment>
               <Divider className={classes.divider} />
 
               <ShareButtons
                 shareUrl={`https://schoolx.pk/online-class/${dataSource["_id"]}`}
                 title={dataSource["name"]}
               />
-            </>
+            </Fragment>
           )}
-
           <Divider className={classes.divider} />
-
           <div className={`${classes.whatsIncludedContainer}`}>
             <div className={`${classes.whatsIncludedHeader}`}>
               <Typography
