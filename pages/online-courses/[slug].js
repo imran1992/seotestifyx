@@ -18,16 +18,50 @@ export const getServerSideProps = async ({ req, res, query, params }) => {
   const ALL_LECTURE_SERIES = gql`
   {
     findClassRoom(query: { _id: "${
-      !isEmpty(user) && user["classRoom"] ? user["classRoom"] : slug
+      !isEmpty(user) && user["classRoom"] ? user["classRoom"] : courseId
     }" }) {
       _id
       name
       category
       description
-      
+      courses {
+        _id
+        name
+        price
+        description
+        subscribers
+        image_url 
+        teacher {
+          _id
+          name
+          phone
+          country
+        }
+        lectures {
+          _id
+          name
+          description
+          duration
+          price
+          startTime
+          meetingID
+          keywords
+          image_url
+          meetingInfo
+        }
+        
+        tests {
+          name
+        }
+        subject {
+          name
+          _id
+        }
+      }
     }
   }
 `;
+
   const ALL_LECTURE_SERIES_IF_NO_COURSE_ID = gql`
     {
       findCourse(query: {}) {

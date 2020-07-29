@@ -442,8 +442,8 @@ const Dashboard = ({ courseId, initialData }) => {
               content={`${initialData["findClassRoom"][0]["name"]} Online Courses`}
             />
             <meta
-              property="og:description:"
-              content={`${initialData["findClassRoom"][0]["description:"]}`}
+              property="og:description"
+              content={`${initialData["findClassRoom"][0]["description"]}`}
             />
           </Fragment>
         ) : (
