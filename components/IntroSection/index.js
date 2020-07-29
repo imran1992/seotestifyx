@@ -25,8 +25,6 @@ const CLASSES_QUERY = `
     }
 }
 `;
-
-
 const useStyles = makeStyles((theme) => {
   const { breakpoints, spacing } = theme;
 

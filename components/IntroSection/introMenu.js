@@ -89,7 +89,6 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-
 const ColorButton = withStyles((theme) => ({
   root: {
     boxShadow: "0px 0px 15px #0000000D",
@@ -110,7 +109,6 @@ const ColorButton = withStyles((theme) => ({
     width: "175px !important",
   },
 }))(ToggleButton);
-
 const GetStartedButton = withStyles((theme) => ({
   root: {
     color: "#fff",
@@ -302,7 +300,6 @@ const IntroSection = (props) => {
               {classGroups &&
                 Object.keys(classGroups).map((group_name, i) => {
                   const group_classes = classGroups[group_name] || [];
-
                   return (
                     <div style={{ marginLeft: 20, marginBottom: 15 }}>
                       <p className={classes.heading1}>{group_name}</p>
