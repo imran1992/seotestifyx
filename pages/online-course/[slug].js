@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { useAmp } from "next/amp";
 import { Typography, Chip, Button, Divider } from "@material-ui/core";
 import { useQuery } from "@apollo/react-hooks";
 import moment from "moment";
@@ -325,6 +326,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const onlineCourse = ({ initialApolloState }) => {
+  const isAmp = useAmp();
   const Router = useRouter();
   const classes = useStyles();
   const { query } = Router;
@@ -519,6 +521,10 @@ const onlineCourse = ({ initialApolloState }) => {
           <meta
             name="description"
             content={initialApolloState["description"]}
+          />
+          <meta
+            name="keywords"
+            content="online, studies, study, learning, courses, teachers"
           />
           <meta
             property="og:url"
@@ -876,6 +882,7 @@ const onlineCourse = ({ initialApolloState }) => {
     </div>
   );
 };
+export const config = { amp: "hybrid" };
 export const getServerSideProps = async (ctx) => {
   const apolloClient = initApolloClient();
   const query = gql`
