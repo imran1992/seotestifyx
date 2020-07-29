@@ -777,6 +777,7 @@ const onlineCourse = ({ initialApolloState }) => {
             </div>
             <div className={`${classes.perksListContainer}`}>
               <Perk
+                alt="schoolx-post-lecture-prctice"
                 bgColor="rgb(231, 253, 223)"
                 perkName="Post lecture practice"
                 perkImg="https://image.flaticon.com/icons/svg/2904/2904843.svg"
