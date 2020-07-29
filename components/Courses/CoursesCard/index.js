@@ -198,12 +198,7 @@ const CoursesCard = (props) => {
         if (isUserEnrolled) Router.push(`/online-course/${_id}`);
       }}
     >
-      <div
-        onClick={() => Router.push(`/online-course/${_id}`)}
-        //typeof="CourseInstance"
-        itemScope
-        //itemType="http://schema.org/Course"
-      >
+      <div onClick={() => Router.push(`/online-course/${_id}`)} itemScope>
         <CardMedia
           className={classes.media}
           image={image_url}
@@ -219,11 +214,14 @@ const CoursesCard = (props) => {
             variant="h5"
             component="h2"
             className={`${classes.cardTitle} ${classes.fontBold}`}
-            property="name"
+            property="name" //schoolXGoogleCourseName
           >
             {name}
           </Typography>
-          <span style={{ display: "none" }} property="description">
+          <span
+            style={{ display: "none" }}
+            property="description" //schoolXGoogleCourseDescription
+          >
             {description}
           </span>
           <div rel="hasCourseInstance" typeof="CourseInstance">
@@ -237,7 +235,6 @@ const CoursesCard = (props) => {
             className={`${classes.subjectContainer}`}
             itemProp="aggregateRating"
             itemScope
-            //itemType="http://schema.org/AggregateRating"
           >
             <p className={`${classes.subjectMain}`}>
               <span className={`${classes.rating}`} itemProp="ratingValue">
@@ -253,7 +250,7 @@ const CoursesCard = (props) => {
               <FiberManualRecord className={`${classes.subjectDot}`} />
               <span
                 className={`${classes.subjectTeacher}`}
-                property="instructor"
+                property="instructor"//schoolXGoogleCourseInstructor
                 typeof="Person"
               >
                 <span property="name">

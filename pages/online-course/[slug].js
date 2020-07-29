@@ -484,6 +484,9 @@ const onlineCourse = ({ initialApolloState }) => {
             Online classes schedule for {initialApolloState["name"]} |
             schoolX.pk
           </title>
+          {
+            //schoolxGoogleIndexing
+          }
           <script type="application/ld+json">
             {`{
               "@context": "https://schema.org",
@@ -506,6 +509,9 @@ const onlineCourse = ({ initialApolloState }) => {
                           }
                }`}
           </script>
+          {
+            //schoolxMetaData
+          }
           <meta
             property="og:url"
             content={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
