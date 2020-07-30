@@ -530,8 +530,8 @@ const onlineCourse = ({ initialApolloState }) => {
             property="og:description"
             content={initialApolloState["description"]}
           />
-          <meta property="og:image" content="https://schoolx.pk/images/logo_check.jpg" />
-          <meta property="og:image:secure_url" content="https://schoolx.pk/images/logo_check.jpg" />
+          <meta property="og:image" content="https://seotestify.vercel.app/images/logo_check.jpg" />
+          <meta property="og:image:secure_url" content="https://seotestify.vercel.app/images/logo_check.jpg" />
           <meta property="og:image" content="image" />
           <meta property="og:image:width" content="202" />
           <meta property="og:image:height" content="42" />
