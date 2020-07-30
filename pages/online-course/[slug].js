@@ -530,7 +530,6 @@ const onlineCourse = ({ initialApolloState }) => {
             property="og:description"
             content={initialApolloState["description"]}
           />
-          <meta property="og:type" content="course" />
           <meta property="og:image" content="https://schoolx.pk/images/logoN.png" />
           <meta property="og:image:secure_url" content="https://schoolx.pk/images/logoN.png" />
           <meta property="og:image" content="image" />
