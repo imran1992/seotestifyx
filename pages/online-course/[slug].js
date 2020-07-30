@@ -490,30 +490,28 @@ const onlineCourse = ({ initialApolloState }) => {
             //schoolxGoogleIndexing
           }
           <script type="application/ld+json">
-            {`{
+            {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Course",
-              "name": "${initialApolloState["name"]}",
-              "description": "${initialApolloState["description"]}",
-              "price":"Rs ${initialApolloState["price"]}",
-              "instructor":{
-                       "@type": "Person",
-                       "name": "${initialApolloState["teacher"]["name"]}"
-                       },
-              "hasCourseInstance":{
-                       "@type": "CourseInstance",
-                       "courseMode": "online"
-                          },
-              "provider": {
-                       "@type": "Organization",
-                       "name": "University of Technology - Eureka",
-                       "sameAs": "http://www.ut-eureka.edu"
-                          }
-               }`}
+              name: initialApolloState["name"],
+              description: initialApolloState["description"],
+              price: "Rs " + initialApolloState["price"],
+              instructor: {
+                "@type": "Person",
+                name: initialApolloState["teacher"]["name"],
+              },
+              hasCourseInstance: {
+                "@type": "CourseInstance",
+                courseMode: "online",
+              },
+              provider: {
+                "@type": "Organization",
+                name: "University of Technology - Eureka",
+                sameAs: "http://www.ut-eureka.edu",
+              },
+            })}
           </script>
-          {
-            //schoolxMetaData
-          }
+
           <link
             rel="canonical"
             href={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
