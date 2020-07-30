@@ -511,7 +511,7 @@ const onlineCourse = ({ initialApolloState }) => {
 
           <link
             rel="canonical"
-            href={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
+            href={`https://seotestify.vercel.app/online-course/${initialApolloState["_id"]}`}
           />
           <meta
             name="description"
@@ -523,7 +523,7 @@ const onlineCourse = ({ initialApolloState }) => {
           />
           <meta
             property="og:url"
-            content={`https://schoolx.pk/online-course/${initialApolloState["_id"]}`}
+            content={`https://seotestify.vercel.app/online-course/${initialApolloState["_id"]}`}
           />
           <meta property="og:site_name" content="SchoolX" />
           <meta property="og:title" content={initialApolloState["name"]} />
@@ -532,8 +532,16 @@ const onlineCourse = ({ initialApolloState }) => {
             content={initialApolloState["description"]}
           />
           <meta property="og:type" content="course" />
-          {/*<meta property="og:image" content={dataSource["image_url"]} />
+          <meta property="og:image" content="/images/logoN.png" />
+          <meta property="og:image:secure_url" content="/images/logoN.png" />
+          <meta property="og:image" content="image" />
+          <meta property="og:image:width" content="202" />
+          <meta property="og:image:height" content="42" />
           <meta
+            property="og:image:alt"
+            content="SchoolX | Online Learning Platform"
+          />
+          {/* <meta
             property="og:image:secure_url"
             content={dataSource["image_url"]}
           />
