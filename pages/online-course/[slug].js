@@ -508,7 +508,6 @@ const onlineCourse = ({ initialApolloState }) => {
               },
             })}
           </script>
-
           <link
             rel="canonical"
             href={`https://seotestify.vercel.app/online-course/${initialApolloState["_id"]}`}
@@ -541,28 +540,6 @@ const onlineCourse = ({ initialApolloState }) => {
             property="og:image:alt"
             content="SchoolX | Online Learning Platform"
           />
-          {/* <meta
-            property="og:image:secure_url"
-            content={dataSource["image_url"]}
-          />
-          
-          <meta property="og:image:type" content="image" />
-          <meta property="og:image:width" content="380" />
-          <meta property="og:image:height" content="230" />
-          <meta
-            property="og:image:alt"
-            content={`${
-              dataSource["teacher"] != undefined
-                ? dataSource["teacher"]["name"]
-                : ""
-            }`}
-          />
-          <meta property="courseCode" content="380" />
-          <meta property="coursePrerequisites" content="380" />
-          <meta property="educationalCredentialAwarded" content="380" />
-          <meta property="hasCourseInstance" content="380" />
-          <meta property="numberOfCredits" content="3" />
-          <meta property="occupationalCredentialAwarded" content="380" /> */}
         </Head>
       ) : (
         <Head>
