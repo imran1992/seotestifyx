@@ -106,7 +106,7 @@ const APP = ({ Component, pageProps, router }) => {
         {getmeta()}
       </Head>
       <Pixel name="FACEBOOK_PIXEL_1" />
-      <PersistGate loading={<Component {...pageProps} />} persistor={persistor}>
+      {typeof window === "undefined" ? (
         <ThemeProvider theme={theme}>
           <div
             className={
@@ -129,7 +129,35 @@ const APP = ({ Component, pageProps, router }) => {
               : !Arr.includes(router.route.split("/")[1]) && <Footer />}
           </div>
         </ThemeProvider>
-      </PersistGate>
+      ) : (
+        <PersistGate
+          loading={<Component {...pageProps} />}
+          persistor={persistor}
+        >
+          <ThemeProvider theme={theme}>
+            <div
+              className={
+                !Arr.includes(router.route.split("/")[1]) &&
+                !Arr.includes(router.route.split("/")[2])
+                  ? "layout"
+                  : ""
+              }
+            >
+              {/* {!Arr.includes(router.route.split("/")[1]) &&
+                !Arr.includes(router.route.split("/")[2]) && (
+                  )} */}
+              {router.route != "/online-class/live/[slug]" ? (
+                <DashboardHeader />
+              ) : null}
+              <Component {...pageProps} />
+              {router.route.split("/")[1] == "programs" ||
+              router.route.split("/")[1] == "classlIst"
+                ? null
+                : !Arr.includes(router.route.split("/")[1]) && <Footer />}
+            </div>
+          </ThemeProvider>
+        </PersistGate>
+      )}
     </Provider>
   );
 };
