@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import nextCookie from "next-cookies";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { initializeStore } from "../../redux/store";
 import IntroMenu from "@components/IntroSection/introMenu";
 
-const LandingPage = (props) => {
+const LandingPage = ({ isMobileView }) => {
   const { user } = useSelector((state) => state["USER"]);
   //console.log(props.isMobileView, "isMobileView", user);
 
   useEffect(() => {
-    const { pathname } = Router;
+    const { pathname, push } = useRouter();
     let classId = localStorage.getItem("selected-class");
 
     if (classId != null) {
-      Router.push(`/online-courses/${classId || user._id}`);
-    } else if (props.isMobileView != null) {
-      Router.push("/programs");
+      push(`/online-courses/${classId || user._id}`);
+    } else if (isMobileView != null) {
+      push("/programs");
     }
   });
 
