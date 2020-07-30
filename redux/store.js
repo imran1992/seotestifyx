@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducers";
 import { InitialAppState } from "./reducers/appStateReducer";
 import { InitialUserState } from "./reducers/userReducer";
+
 let store;
 const InitialState = { APPSTATE: InitialAppState, USER: InitialUserState };
 const persistConfig = {
@@ -21,7 +22,7 @@ function makeStore(initialState = InitialState) {
   return createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(applyMiddleware(thunk))
   );
 }
 

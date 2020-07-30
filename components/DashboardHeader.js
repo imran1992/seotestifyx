@@ -338,7 +338,6 @@ const DashboardHeader = (props) => {
                     className={"text-white text-bold"}
                   >
                     <img
-                      alt="schoolx-logo"
                       src="/images/logoN.png"
                       height="28px"
                       alt="logo schoolx"
@@ -381,7 +380,7 @@ const DashboardHeader = (props) => {
                         }
                       }}
                     >
-                      <img alt="schoolx-logo" src={"/images/logoN.png"} />
+                      <img src={"/images/logoN.png"} />
                     </a>
                   </li>
                   {pathname == "/online-courses/[slug]" ? (
@@ -483,7 +482,6 @@ const DashboardHeader = (props) => {
                     aria-expanded="true"
                   >
                     <img
-                    alt="user-role-indicator"
                       src={`/images/${user.role}.jpg`}
                       className="img-fluid rounded-circle z-depth-0"
                       alt="profile"
@@ -526,7 +524,7 @@ const DashboardHeader = (props) => {
                       marginRight: "1rem",
                     }}
                     className={"nav-link"}
-                    href
+                    href="/register"
                     onClick={(e) => {
                       e.preventDefault();
                       Router.push({ pathname: "/register", query });
@@ -573,7 +571,7 @@ const DashboardHeader = (props) => {
                   //alert("CLICKED");
                 }}
               >
-                <img alt="schoolx-logo" src={"/images/logoN.png"} />
+                <img src={"/images/logoN.png"} />
               </span>
               <IconButton onClick={toggleDrawer(false)}>
                 <ChevronLeft style={{ color: "#fff" }} />
@@ -810,7 +808,7 @@ const DashboardHeader = (props) => {
             Router.push("/");
           }}
         >
-          <img alt="schoolx-logo" src={"/images/logoN.png"} />
+          <img src={"/images/logoN.png"} />
         </a>
         <hr className="my-0 text-primary" />
         <div className="list-group list-group-flush">

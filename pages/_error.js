@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Style from "../styles/errorPage";
 import { Button } from "@material-ui/core";
+import Style from "../styles/errorPage";
+
 const Error = ({ statusCode }) => {
   return (
     <div className={"errorScreenContainer"}>

@@ -35,11 +35,8 @@ const useStyles = makeStyles({
   },
 });
 
-const SliderHeader = (props) => {
+const SliderHeader = ({ title, subTitle, linkRef, linkText, onClickLinkText }) => {
   const classes = useStyles();
-
-  const { title, subTitle, linkRef, linkText, onClickLinkText } = props;
-
   return (
     <div className={`${classes.upComingClassesHeaderContainer}`}>
       <div className={`${classes.upComingClassesHeaderSide1}`}>

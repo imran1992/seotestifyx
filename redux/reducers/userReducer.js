@@ -5,7 +5,7 @@ export const InitialUserState = {
   user: {},
   selected_class: null,
 };
-export default (state = InitialUserState, { type, payload }) => {
+const USER_STATE = (state = InitialUserState, { type, payload }) => {
   switch (type) {
     case ActionType.LOGED_IN: {
       return {
@@ -27,3 +27,5 @@ export default (state = InitialUserState, { type, payload }) => {
       return state;
   }
 };
+
+export default USER_STATE;

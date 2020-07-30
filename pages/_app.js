@@ -35,7 +35,7 @@ const theme = createMuiTheme({
     },
   },
 });
-export default ({ Component, pageProps, router }) => {
+const APP = ({ Component, pageProps, router }) => {
   const store = useStore(pageProps.initialReduxState);
   const persistor = persistStore(store);
   const getmeta = () => {
@@ -106,7 +106,7 @@ export default ({ Component, pageProps, router }) => {
         {getmeta()}
       </Head>
       <Pixel name="FACEBOOK_PIXEL_1" />
-      {typeof window === "undefined" ? (
+      <PersistGate loading={<Component {...pageProps} />} persistor={persistor}>
         <ThemeProvider theme={theme}>
           <div
             className={
@@ -119,7 +119,6 @@ export default ({ Component, pageProps, router }) => {
             {/* {!Arr.includes(router.route.split("/")[1]) &&
                 !Arr.includes(router.route.split("/")[2]) && (
                   )} */}
-
             {router.route != "/online-class/live/[slug]" ? (
               <DashboardHeader />
             ) : null}
@@ -130,36 +129,8 @@ export default ({ Component, pageProps, router }) => {
               : !Arr.includes(router.route.split("/")[1]) && <Footer />}
           </div>
         </ThemeProvider>
-      ) : (
-        <PersistGate
-          loading={<Component {...pageProps} />}
-          persistor={persistor}
-        >
-          <ThemeProvider theme={theme}>
-            <div
-              className={
-                !Arr.includes(router.route.split("/")[1]) &&
-                !Arr.includes(router.route.split("/")[2])
-                  ? "layout"
-                  : ""
-              }
-            >
-              {/* {!Arr.includes(router.route.split("/")[1]) &&
-                !Arr.includes(router.route.split("/")[2]) && (
-                  )} */}
-
-              {router.route != "/online-class/live/[slug]" ? (
-                <DashboardHeader />
-              ) : null}
-              <Component {...pageProps} />
-              {router.route.split("/")[1] == "programs" ||
-              router.route.split("/")[1] == "classlIst"
-                ? null
-                : !Arr.includes(router.route.split("/")[1]) && <Footer />}
-            </div>
-          </ThemeProvider>
-        </PersistGate>
-      )}
+      </PersistGate>
     </Provider>
   );
 };
+export default APP;
