@@ -3,6 +3,7 @@ import { useAmp } from "next/amp";
 import { Typography, Chip, Button, Divider } from "@material-ui/core";
 import { useQuery } from "@apollo/react-hooks";
 import moment from "moment";
+import { siteUrl } from "@utils/utilities";
 import { useSelector } from "react-redux";
 import Loader from "@components/shared/loader";
 import ShareButtons from "@components/ShareButtons";
@@ -510,7 +511,7 @@ const onlineCourse = ({ initialApolloState }) => {
           </script>
           <link
             rel="canonical"
-            href={`https://seotestify.vercel.app/online-course/${initialApolloState["_id"]}`}
+            href={`${siteUrl}online-course/${initialApolloState["_id"]}`}
           />
           <meta
             name="description"
@@ -522,7 +523,7 @@ const onlineCourse = ({ initialApolloState }) => {
           />
           <meta
             property="og:url"
-            content={`https://seotestify.vercel.app/online-course/${initialApolloState["_id"]}`}
+            content={`${siteUrl}online-course/${initialApolloState["_id"]}`}
           />
           <meta property="og:site_name" content="SchoolX" />
           <meta property="og:title" content={initialApolloState["name"]} />
@@ -530,11 +531,18 @@ const onlineCourse = ({ initialApolloState }) => {
             property="og:description"
             content={initialApolloState["description"]}
           />
-          <meta property="og:image" content="https://seotestify.vercel.app/images/logo_check.jpg" />
-          <meta property="og:image:secure_url" content="https://seotestify.vercel.app/images/logo_check.jpg" />
+          <meta property="og:type" content="course" />
+          <meta
+            property="og:image"
+            content={`${siteUrl}/images/logo_check.jpg`}
+          />
+          <meta
+            property="og:image:secure_url"
+            content={`${siteUrl}/images/logo_check.jpg`}
+          />
           <meta property="og:image" content="image" />
-          <meta property="og:image:width" content="202" />
-          <meta property="og:image:height" content="42" />
+          <meta property="og:image:width" content="200" />
+          <meta property="og:image:height" content="200" />
           <meta
             property="og:image:alt"
             content="SchoolX | Online Learning Platform"
