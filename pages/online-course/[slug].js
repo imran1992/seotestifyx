@@ -486,9 +486,6 @@ const onlineCourse = ({ initialApolloState }) => {
             Online classes schedule for {initialApolloState["name"]} |
             schoolX.pk
           </title>
-          {
-            //schoolxGoogleIndexing
-          }
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
