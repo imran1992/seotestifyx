@@ -4,6 +4,7 @@ import Router from "next/router";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import DashboardHeader from "@components/DashboardHeader";
+import { siteUrl } from "@utils/utilities";
 import Pixel from "@components/Pixel";
 import HeadTags from "@components/headTags";
 import Footer from "@components/Footer";
@@ -47,7 +48,7 @@ const APP = ({ Component, pageProps, router }) => {
               Choose Program | SchoolX, the leading online learning platform in
               Pakistan
             </title>
-            <meta property="og:url" content="https://seotestify.vercel.app/" />
+            <meta property="og:url" content={siteUrl} />
             <meta
               property="og:title"
               content="Choose Program | SchoolX, the leading online learning platform in Pakistan"
@@ -57,11 +58,17 @@ const APP = ({ Component, pageProps, router }) => {
               content={`Schoolx is the largest online learning platform in Pakistan for A Level, O Level, FSc & Matric. ✓ Get best tuition and study all subjects online with best teachers of Pakistan`}
             />
             <meta property="og:site_name" content="SchoolX" />
-            <meta property="og:image" content="https://seotestify.vercel.app/images/logo_check.jpg" />
-            <meta property="og:image:secure_url" content="https://seotestify.vercel.app/images/logo_check.jpg" />
+            <meta
+              property="og:image"
+              content={`${siteUrl}images/logo_check.jpg`}
+            />
+            <meta
+              property="og:image:secure_url"
+              content={`${siteUrl}images/logo_check.jpg`}
+            />
             <meta property="og:image" content="image" />
-            <meta property="og:image:width" content="202" />
-            <meta property="og:image:height" content="42" />
+            <meta property="og:image:width" content="200" />
+            <meta property="og:image:height" content="200" />
             <meta
               property="og:image:alt"
               content="SchoolX | Online Learning Platform"

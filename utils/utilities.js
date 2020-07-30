@@ -1,5 +1,6 @@
 import { parsePhoneNumber } from "libphonenumber-js/mobile";
 const developerMode = false;
+const siteUrl = "https://seotestify.vercel.app/"
 const InfoLogger = (title, Detail) => {
   developerMode && console.log(title + " :\n", Detail);
 };
@@ -338,6 +339,7 @@ const getMobileOperatingSystem = () => {
   return "unknown";
 };
 export {
+  siteUrl,
   InfoLogger,
   WarningLogger,
   ErrorLogger,

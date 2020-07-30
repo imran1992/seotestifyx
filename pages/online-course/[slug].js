@@ -534,11 +534,11 @@ const onlineCourse = ({ initialApolloState }) => {
           <meta property="og:type" content="course" />
           <meta
             property="og:image"
-            content={`${siteUrl}/images/logo_check.jpg`}
+            content={`${siteUrl}images/logo_check.jpg`}
           />
           <meta
             property="og:image:secure_url"
-            content={`${siteUrl}/images/logo_check.jpg`}
+            content={`${siteUrl}images/logo_check.jpg`}
           />
           <meta property="og:image" content="image" />
           <meta property="og:image:width" content="200" />
