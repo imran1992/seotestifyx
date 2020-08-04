@@ -520,7 +520,12 @@ const deleteClass = (id) => {
     return response;
   });
 };
-
+const getpaymentMethod = () =>
+  publicApi.get("/paymentmethods").then((response) => response);
+const postOrder = (data) =>
+  api.post("/orders", data).then((response) => response);
+const posttoEasyPAisa = (data) =>
+  api.post("/easypaisacc", data).then((response) => response);
 export {
   userLogin,
   userRegister,
@@ -585,4 +590,7 @@ export {
   patchUserWithEnrollPaid,
   updateEnrollmentValidity,
   getClassesDTO,
+  getpaymentMethod,
+  postOrder,
+  posttoEasyPAisa,
 };

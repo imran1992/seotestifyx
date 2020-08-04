@@ -213,7 +213,7 @@ const DashboardHeader = (props) => {
   const anchorRef = useRef(null);
 
   return (
-    <header>
+    <div>
       <nav
         className={`navbar fixed-top  ${
           user.role === "student" || !user.role ? "pl-0" : ""
@@ -290,7 +290,6 @@ const DashboardHeader = (props) => {
                       </Paper>
                     </ClickAwayListener>
                   </Popper>
-
                   <Chip
                     innerRef={anchorRef}
                     icon={<ClassIcon />}
@@ -469,6 +468,18 @@ const DashboardHeader = (props) => {
                     <span className="counter">{user.notificationCount}</span>
                   )}
                 </li> */}
+                <li className="nav-item avatar dropdown">
+                  <a
+                    className="nav-link dropdown-toggle waves-effect profile"
+                    href="/cart"
+                  >
+                    <img
+                      src={`/images/cart.png`}
+                      className="img-fluid rounded-circle z-depth-0"
+                      alt="profile"
+                    />
+                  </a>
+                </li>
                 <li className="nav-item avatar dropdown">
                   <a
                     className={`nav-link dropdown-toggle waves-effect profile ${
@@ -947,7 +958,7 @@ const DashboardHeader = (props) => {
             : "Do you really want to end the lecture ? All participants will be kicked."
         }
       />
-    </header>
+    </div>
   );
 };
 
