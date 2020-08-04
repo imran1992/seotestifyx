@@ -131,7 +131,7 @@ const Payment = () => {
                           autoRedirect,
                         } = data;
                         push({
-                          pathname: "/payment/easypaisa",
+                          pathname: "/payment/easypaisa/confirm",
                           query: {
                             amount,
                             orderRefNum,

@@ -21,14 +21,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
 }));
-const PaymentEasyPaisa = () => {
+const PaymentEasyPaisaConfirm = () => {
   const classes = useStyles();
   const { query, push } = useRouter();
   const {
     amount,
     merchantHashedReq,
     orderRefNum,
-    auth_token,
     expiryDate,
     storeId,
     postBackURL,
@@ -52,12 +51,6 @@ const PaymentEasyPaisa = () => {
         merchantHashedReq,
         storeId,
       };
-    } else if (auth_token) {
-      form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Confirm.jsf";
-      ObjectOp = {
-        auth_token,
-        postBackURL: "https://api.schoolx.pk/eppostbackfinal",
-      };
     }
     console.log("allData", ObjectOp);
     for (let key_ep in ObjectOp) {
@@ -73,11 +66,11 @@ const PaymentEasyPaisa = () => {
   }, []);
   return (
     <div>
-      <div className={classes.textBox}>Reached at confirmed</div>
+      <div className={classes.textBox}>Connecting To...</div>
       <div className={classes.logoBox}>
         <img src="/images/easypaisa.png" />
       </div>
     </div>
   );
 };
-export default withApollo(PaymentEasyPaisa);
+export default withApollo(PaymentEasyPaisaConfirm);

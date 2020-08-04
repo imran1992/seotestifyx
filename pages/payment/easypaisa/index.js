@@ -24,17 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const PaymentEasyPaisa = () => {
   const classes = useStyles();
   const { query, push } = useRouter();
-  const {
-    amount,
-    merchantHashedReq,
-    orderRefNum,
-    auth_token,
-    expiryDate,
-    storeId,
-    postBackURL,
-    paymentMethod,
-    autoRedirect,
-  } = query;
+  const { auth_token, postBackURL } = query;
 
   useEffect(() => {
     let ObjectOp = {};
@@ -45,18 +35,6 @@ const PaymentEasyPaisa = () => {
       ObjectOp = {
         auth_token,
         postBackURL: "https://api.schoolx.pk/eppostbackfinal",
-      };
-    } else if (amount && merchantHashedReq && orderRefNum) {
-      form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Index.jsf";
-      ObjectOp = {
-        autoRedirect,
-        expiryDate,
-        amount,
-        orderRefNum: orderRefNum + "",
-        paymentMethod,
-        postBackURL,
-        merchantHashedReq,
-        storeId,
       };
     }
     console.log("allData", ObjectOp);
@@ -73,7 +51,7 @@ const PaymentEasyPaisa = () => {
   }, []);
   return (
     <div>
-      <div className={classes.textBox}>Connecting To...</div>
+      <div className={classes.textBox}>Confirmed</div>
       <div className={classes.logoBox}>
         <img src="/images/easypaisa.png" />
       </div>
