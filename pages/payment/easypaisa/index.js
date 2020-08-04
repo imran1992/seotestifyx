@@ -44,7 +44,7 @@ const PaymentEasyPaisa = () => {
       form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Confirm.jsf";
       ObjectOp = {
         auth_token,
-        postBackURL:'https://api.schoolx.pk/eppostbackfinal',
+        postBackURL: "https://api.schoolx.pk/eppostbackfinal",
       };
     } else if (amount && merchantHashedReq && orderRefNum) {
       form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Index.jsf";
