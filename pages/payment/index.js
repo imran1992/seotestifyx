@@ -85,14 +85,15 @@ const Payment = () => {
     }
   }, [data]);
 
-  const totalToPay = cartItems.reduce(
-    (p, c) => p + parseInt(c.Course.price),
-    0
-  );
+  // const totalToPay = cartItems.reduce(
+  //   (p, c) => p + parseInt(c.Course.price),
+  //   0
+  // );
+  const totalToPay = 100;
   return (
     <div style={{ padding: 15 }}>
       <div style={{ marginBottom: 10 }}>{`Select payment method`}</div>
-      <div> {`To pay: Rs ${totalToPay + 0.0}`}</div>
+      <div> {`To pay: Rs ${totalToPay}`}</div>
       <div
         style={{
           display: "flex",
@@ -131,7 +132,7 @@ const Payment = () => {
                           autoRedirect,
                         } = data;
                         push({
-                          pathname: "/payment/easypaisa/confirm",
+                          pathname: "/payment/easypaisa",
                           query: {
                             amount,
                             orderRefNum,
