@@ -3,12 +3,10 @@ import { withApollo, initApolloClient } from "@apolloX/apollo";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
-import { getpaymentMethod, postOrder, posttoEasyPAisa } from "@utils/API";
+import { posttoEasyPAisa } from "@utils/API";
 import { useSelector } from "react-redux";
-import { isEmpty, orderBy } from "lodash";
 import { useRouter } from "next/router";
 import { Typography, Chip, Button, Divider } from "@material-ui/core";
-import { ContactlessOutlined } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
   cartItem: {
     width: 1150,
@@ -26,32 +24,32 @@ const Payment = () => {
   const classes = useStyles();
   const [cartItems, setCartItems] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState([]);
-  const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
-    gql`
-      {
-        findEnrollment(query: { userId: "5f27d0278b35546ca90e9b0a" }) {
-          _id
-          name
-          phone
-          validUpTo
-          createdAt
-          Course {
-            name
-            price
-            image_url
-            description
-          }
-        }
-      }
-    `,
-    {
-      variables: {
-        skip: 0,
-        first: 10,
-      },
-      notifyOnNetworkStatusChange: true,
-    }
-  );
+  // const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
+  //   gql`
+  //     {
+  //       findEnrollment(query: { userId: "5f27d0278b35546ca90e9b0a" }) {
+  //         _id
+  //         name
+  //         phone
+  //         validUpTo
+  //         createdAt
+  //         Course {
+  //           name
+  //           price
+  //           image_url
+  //           description
+  //         }
+  //       }
+  //     }
+  //   `,
+  //   {
+  //     variables: {
+  //       skip: 0,
+  //       first: 10,
+  //     },
+  //     notifyOnNetworkStatusChange: true,
+  //   }
+  // );
 
   const { data: PMData, loading: PMLoading } = useQuery(
     gql`
@@ -79,17 +77,17 @@ const Payment = () => {
     console.log("PMData", PMData);
   }, [PMData]);
 
-  useEffect(() => {
-    if (data && data["findEnrollment"]) {
-      setCartItems(data["findEnrollment"]);
-      console.log("CART", data["findEnrollment"]);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data && data["findEnrollment"]) {
+  //     setCartItems(data["findEnrollment"]);
+  //     console.log("CART", data["findEnrollment"]);
+  //   }
+  // }, [data]);
 
-  const totalToPay = cartItems.reduce(
-    (p, c) => p + parseInt(c.Course.price),
-    0
-  );
+  // const totalToPay = cartItems.reduce(
+  //   (p, c) => p + parseInt(c.Course.price),
+  //   0
+  // );
   // const products = cartItems.reduce((p, c) => {
   //   p.push(c._id);
   //   return p;
@@ -107,7 +105,7 @@ const Payment = () => {
           alignItems: "flex-start",
         }}
       >
-        {paymentMethods.map(({ name, _id, status }, index) =>
+        {paymentMethods.map(({ name, _id, status, image_url }, index) =>
           status === "active" ? (
             <Button
               key={_id}
@@ -116,8 +114,11 @@ const Payment = () => {
               variant="outlined"
               onClick={() => {
                 console.log("Data2Go", {
-                  amount:
-                    totalToPay % 1 === 0 ? totalToPay + ".0" : totalToPay + "",
+                  // amount:
+                  //   totalToPay % 1 === 0
+                  //     ? totalToPay + ".0"
+                  //     : totalToPay + "",
+                  amount,
                   pgwId: _id,
                   pgwName: name,
                   status: "initiated",
@@ -126,10 +127,6 @@ const Payment = () => {
                 });
                 if (name === "Credit/Debit Card") {
                   posttoEasyPAisa({
-                    // amount:
-                    //   totalToPay % 1 === 0
-                    //     ? totalToPay + ".0"
-                    //     : totalToPay + "",
                     amount,
                     pgwId: _id,
                     pgwName: name,
@@ -169,6 +166,7 @@ const Payment = () => {
                 }
               }}
             >
+              <img src={image_url} style={{ height: 28, marginRight: 10 }} />
               {name}
             </Button>
           ) : null
