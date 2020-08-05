@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Cart = () => {
   const classes = useStyles();
   const { push } = useRouter();
-  const user = useSelector(({ USER }) => USER.user);
+  const {user} = useSelector(({ USER }) => USER);
   const [cartItems, setCartItems] = useState([]);
   const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
     gql`
