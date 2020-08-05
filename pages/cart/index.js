@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { withApollo, initApolloClient } from "@apolloX/apollo";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -56,7 +56,7 @@ const Cart = () => {
         return p;
       }, []);
       setCartItems(copyOfCart);
-      console.log("CART", copyOfCart);
+      //console.log("CART", copyOfCart);
     }
   }, [data]);
 
@@ -68,7 +68,7 @@ const Cart = () => {
     c.selected && p.push(c._id);
     return p;
   }, []);
-  console.log("tobePay", payForProduct);
+  // console.log("tobePay", payForProduct);
   return (
     <div
       style={{
@@ -79,117 +79,121 @@ const Cart = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ marginBottom: 10 }}>{`${
-        cartItems.length
-      } Course${cartItems.length > 1 && "s"} in Cart`}</div>
-      {cartItems.map(
-        ({ Course: { price, name, image_url }, selected, _id }, index) => {
-          return (
-            <div
-              key={_id}
-              className={classes.cartItem}
-              onClick={() => {
-                const copyOfCartItems = [...cartItems];
-                copyOfCartItems[index].selected = !selected;
-                setCartItems(copyOfCartItems);
-              }}
-            >
-              <div style={{ width: 600, flexDirection: "row" }}>
-                <img
-                  src={image_url ? image_url : "/images/mathematics0.jpg"}
-                  style={{
-                    width: 100,
-                    marginRight: 10,
-                    height: 60,
-                    borderRadius: 3,
+      {cartItems.length!==0 && (
+        <Fragment>
+          <div style={{ marginBottom: 10 }}>{`${
+            cartItems.length
+          } Course${cartItems.length > 1 && "s"} in Cart`}</div>
+          {cartItems.map(
+            ({ Course: { price, name, image_url }, selected, _id }, index) => {
+              return (
+                <div
+                  key={_id}
+                  className={classes.cartItem}
+                  onClick={() => {
+                    const copyOfCartItems = [...cartItems];
+                    copyOfCartItems[index].selected = !selected;
+                    setCartItems(copyOfCartItems);
                   }}
-                />
-                <span>{name}</span>
-              </div>
-              <div style={{ width: 300 }}></div>
-              <div style={{ width: 200 }}>
-                {parseInt(price) ? `Rs ${price}` : "Free"}
-              </div>
-              <div style={{ width: 50 }}>
-                {selected ? (
-                  <div
-                    style={{
-                      width: 31,
-                      height: 31,
-                      border: "1px solid #28a745",
-                      borderRadius: 31 / 2,
-                      boxShadow:
-                        "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)",
-                    }}
-                  >
-                    <div
+                >
+                  <div style={{ width: 600, flexDirection: "row" }}>
+                    <img
+                      src={image_url ? image_url : "/images/mathematics0.jpg"}
                       style={{
-                        width: 25,
-                        height: 25,
-                        margin: 2,
-                        backgroundColor: "#28a745",
-                        borderRadius: 25 / 2,
+                        width: 100,
+                        marginRight: 10,
+                        height: 60,
+                        borderRadius: 3,
                       }}
-                    ></div>
+                    />
+                    <span>{name}</span>
                   </div>
-                ) : (
-                  <div
-                    style={{
-                      width: 31,
-                      height: 31,
-                      border: "1px solid gray",
-                      borderRadius: 31 / 2,
-                      boxShadow:
-                        "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)",
-                    }}
-                  ></div>
-                )}
-              </div>
-            </div>
-          );
-        }
-      )}
-      {cartItems.length && (
-        <div
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            width: 1150,
-            padding: 10,
-            display: "flex",
-          }}
-        >
-          <span
-            style={{
-              flexDirection: "column",
-              display: "flex",
-            }}
-          >
-            {`Total: Rs ${totalToPay}`}
-            <Button
-              variant="contained"
-              color={"secondary"}
-              disabled={cartItems.findIndex((item) => item.selected) === -1}
-              onClick={() => {
-                push({
-                  pathname: "/payment",
-                  query: {
-                    amount:
-                      totalToPay % 1 === 0
-                        ? totalToPay + ".0"
-                        : totalToPay + "",
-                    products: payForProduct.reduce(
-                      (p, c, idx) => p + (idx ? "," + c : c),
-                      ""
-                    ),
-                  },
-                });
+                  <div style={{ width: 300 }}></div>
+                  <div style={{ width: 200 }}>
+                    {parseInt(price) ? `Rs ${price}` : "Free"}
+                  </div>
+                  <div style={{ width: 50 }}>
+                    {selected ? (
+                      <div
+                        style={{
+                          width: 31,
+                          height: 31,
+                          border: "1px solid #28a745",
+                          borderRadius: 31 / 2,
+                          boxShadow:
+                            "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 25,
+                            height: 25,
+                            margin: 2,
+                            backgroundColor: "#28a745",
+                            borderRadius: 25 / 2,
+                          }}
+                        ></div>
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          width: 31,
+                          height: 31,
+                          border: "1px solid gray",
+                          borderRadius: 31 / 2,
+                          boxShadow:
+                            "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)",
+                        }}
+                      ></div>
+                    )}
+                  </div>
+                </div>
+              );
+            }
+          )}
+          {cartItems.length && (
+            <div
+              style={{
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                width: 1150,
+                padding: 10,
+                display: "flex",
               }}
             >
-              CHECK OUT
-            </Button>
-          </span>
-        </div>
+              <span
+                style={{
+                  flexDirection: "column",
+                  display: "flex",
+                }}
+              >
+                {`Total: Rs ${totalToPay}`}
+                <Button
+                  variant="contained"
+                  color={"secondary"}
+                  disabled={cartItems.findIndex((item) => item.selected) === -1}
+                  onClick={() => {
+                    push({
+                      pathname: "/payment",
+                      query: {
+                        amount:
+                          totalToPay % 1 === 0
+                            ? totalToPay + ".0"
+                            : totalToPay + "",
+                        products: payForProduct.reduce(
+                          (p, c, idx) => p + (idx ? "," + c : c),
+                          ""
+                        ),
+                      },
+                    });
+                  }}
+                >
+                  CHECK OUT
+                </Button>
+              </span>
+            </div>
+          )}
+        </Fragment>
       )}
     </div>
   );
