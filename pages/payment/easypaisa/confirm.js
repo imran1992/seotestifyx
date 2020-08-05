@@ -36,12 +36,11 @@ const PaymentEasyPaisaConfirm = () => {
   } = query;
 
   useEffect(() => {
-    let ObjectOp = {};
-    const form_ep = document.createElement("form");
-    form_ep.method = "POST";
     if (amount && merchantHashedReq && orderRefNum) {
+      const form_ep = document.createElement("form");
+      form_ep.method = "POST";
       form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Index.jsf";
-      ObjectOp = {
+      const ObjectOp = {
         autoRedirect,
         expiryDate,
         amount,
@@ -51,18 +50,18 @@ const PaymentEasyPaisaConfirm = () => {
         merchantHashedReq,
         storeId,
       };
+      console.log("allData", ObjectOp);
+      for (let key_ep in ObjectOp) {
+        const element_ep = document.createElement("input");
+        element_ep.type = "hidden";
+        element_ep.value = ObjectOp[key_ep];
+        element_ep.name = key_ep;
+        form_ep.appendChild(element_ep);
+      }
+      document.body.appendChild(form_ep);
+      form_ep.submit();
+      form_ep.remove();
     }
-    console.log("allData", ObjectOp);
-    for (let key_ep in ObjectOp) {
-      const element_ep = document.createElement("input");
-      element_ep.type = "hidden";
-      element_ep.value = ObjectOp[key_ep];
-      element_ep.name = key_ep;
-      form_ep.appendChild(element_ep);
-    }
-    document.body.appendChild(form_ep);
-    form_ep.submit();
-    form_ep.remove();
   }, []);
   return (
     <div>

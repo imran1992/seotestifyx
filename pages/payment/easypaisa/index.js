@@ -21,15 +21,14 @@ const useStyles = makeStyles((theme) => ({
 const PaymentEasyPaisa = () => {
   const classes = useStyles();
   const { query, push } = useRouter();
-  const { auth_token, postBackURL } = query;
 
   useEffect(() => {
-    let ObjectOp = {};
+    const { auth_token, postBackURL } = query;
     if (auth_token) {
       const form_ep = document.createElement("form");
       form_ep.method = "POST";
       form_ep.action = "https://easypay.easypaisa.com.pk/easypay/Confirm.jsf";
-      ObjectOp = {
+      const ObjectOp = {
         auth_token,
         postBackURL: "https://api.schoolx.pk/eppostbackfinal",
       };
@@ -44,6 +43,8 @@ const PaymentEasyPaisa = () => {
       document.body.appendChild(form_ep);
       form_ep.submit();
       form_ep.remove();
+    } else {
+      console.log("Query", query);
     }
   }, []);
   return (
