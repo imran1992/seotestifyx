@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { withApollo } from "@apolloX/apollo";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 
@@ -28,7 +25,6 @@ const PaymentEasyPaisa = () => {
 
   useEffect(() => {
     let ObjectOp = {};
-
     if (auth_token) {
       const form_ep = document.createElement("form");
       form_ep.method = "POST";
@@ -37,7 +33,6 @@ const PaymentEasyPaisa = () => {
         auth_token,
         postBackURL: "https://api.schoolx.pk/eppostbackfinal",
       };
-
       console.log("allData", ObjectOp);
       for (let key_ep in ObjectOp) {
         const element_ep = document.createElement("input");
@@ -60,4 +55,4 @@ const PaymentEasyPaisa = () => {
     </div>
   );
 };
-export default withApollo(PaymentEasyPaisa);
+export default PaymentEasyPaisa;
