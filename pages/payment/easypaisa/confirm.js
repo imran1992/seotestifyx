@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { withApollo } from "@apolloX/apollo";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 
@@ -72,4 +69,4 @@ const PaymentEasyPaisaConfirm = () => {
     </div>
   );
 };
-export default withApollo(PaymentEasyPaisaConfirm);
+export default PaymentEasyPaisaConfirm;
