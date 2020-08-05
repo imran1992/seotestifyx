@@ -13,7 +13,7 @@ const PaymentEasyPaisaEndResult = () => {
       style={{ width: "100vw", height: "100vh", padding: "5vw" }}
       className=""
     >
-      <div>{success ? "Success" : "Failed"}</div>
+      <div>{success === "true" ? "Success" : "Failed"}</div>
       <div>{amount}</div>
       <div>{orderRefNumber}</div>
     </div>

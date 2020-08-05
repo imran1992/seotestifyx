@@ -21,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
 const Cart = () => {
   const classes = useStyles();
   const { push } = useRouter();
+  const user = useSelector(({ USER }) => USER.user);
   const [cartItems, setCartItems] = useState([]);
   const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
     gql`
       {
-        findEnrollment(query: { userId: "5f27d0278b35546ca90e9b0a" }) {
+        findEnrollment(query: { userId: "${user._id}" }) {
           _id
           name
           phone
@@ -60,7 +61,7 @@ const Cart = () => {
     0
   );
   return (
-    <div style={{ padding: 15 }}>
+    <div style={{ padding: 15,minHeight:'calc(100vh - 114px)'}}>
       <div style={{ marginBottom: 10 }}>{`${
         cartItems.length
       } Course${cartItems.length > 1 && "s"} in Cart`}</div>
