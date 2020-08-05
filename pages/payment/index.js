@@ -147,19 +147,19 @@ const Payment = () => {
                           expiryDate,
                           autoRedirect,
                         } = data;
-                        push({
-                          pathname: "/payment/easypaisa",
-                          query: {
-                            amount,
-                            orderRefNum,
-                            merchantHashedReq,
-                            paymentMethod,
-                            storeId,
-                            postBackURL,
-                            expiryDate,
-                            autoRedirect,
-                          },
-                        });
+                         push({
+                           pathname: "/payment/easypaisa",
+                           query: {
+                             amount,
+                             orderRefNum,
+                             merchantHashedReq,
+                             paymentMethod,
+                             storeId,
+                             postBackURL,
+                             expiryDate,
+                             autoRedirect,
+                           },
+                         });
                       }
                     })
                     .catch((e) => {});

@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const PaymentEasyPaisa = () => {
   const classes = useStyles();
   const { query } = useRouter();
+  
   useEffect(() => {
     const {
       postBackURL,
@@ -52,14 +53,14 @@ const PaymentEasyPaisa = () => {
           autoRedirect,
           expiryDate,
           amount,
-          orderRefNum: orderRefNum + "",
+          orderRefNum,
           paymentMethod,
           postBackURL,
           merchantHashedReq,
           storeId,
         };
       }
-      console.log("allData", ObjectOp);
+      //console.log("allData", ObjectOp);
       for (let key_ep in ObjectOp) {
         const element_ep = document.createElement("input");
         element_ep.type = "hidden";
