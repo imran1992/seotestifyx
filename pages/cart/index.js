@@ -82,28 +82,69 @@ const Cart = () => {
       <div style={{ marginBottom: 10 }}>{`${
         cartItems.length
       } Course${cartItems.length > 1 && "s"} in Cart`}</div>
-      {cartItems.map(({ Course: { price, name, image_url }, _id }, index) => {
-        return (
-          <div key={_id} className={classes.cartItem}>
-            <div style={{ width: 600, flexDirection: "row" }}>
-              <img
-                src={image_url ? image_url : "/images/mathematics0.jpg"}
-                style={{
-                  width: 100,
-                  marginRight: 10,
-                  height: 60,
-                  borderRadius: 3,
-                }}
-              />
-              <span>{name}</span>
+      {cartItems.map(
+        ({ Course: { price, name, image_url }, selected, _id }, index) => {
+          return (
+            <div
+              key={_id}
+              className={classes.cartItem}
+              onClick={() => {
+                const copyOfCartItems = [...cartItems];
+                copyOfCartItems[index].selected = !selected;
+                setCartItems(copyOfCartItems);
+              }}
+            >
+              <div style={{ width: 600, flexDirection: "row" }}>
+                <img
+                  src={image_url ? image_url : "/images/mathematics0.jpg"}
+                  style={{
+                    width: 100,
+                    marginRight: 10,
+                    height: 60,
+                    borderRadius: 3,
+                  }}
+                />
+                <span>{name}</span>
+              </div>
+              <div style={{ width: 300 }}></div>
+              <div style={{ width: 200 }}>
+                {parseInt(price) ? `Rs ${price}` : "Free"}
+              </div>
+              <div style={{ width: 50 }}>
+                {selected ? (
+                  <div
+                    style={{
+                      width: 31,
+                      height: 31,
+                      border: "1px solid #28a745",
+                      borderRadius: 31 / 2,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 25,
+                        height: 25,
+                        margin: 2,
+                        backgroundColor: "#28a745",
+                        borderRadius: 25 / 2,
+                      }}
+                    ></div>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      width: 31,
+                      height: 31,
+                      border: "1px solid gray",
+                      borderRadius: 31 / 2,
+                    }}
+                  ></div>
+                )}
+              </div>
             </div>
-            <div style={{ width: 300 }}></div>
-            <div style={{ width: 250 }}>
-              {parseInt(price) ? `Rs ${price}` : "Free"}
-            </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
       {cartItems.length && (
         <div
           style={{
@@ -124,6 +165,7 @@ const Cart = () => {
             <Button
               variant="contained"
               color={"secondary"}
+              disabled={cartItems.findIndex((item) => item.selected) === -1}
               onClick={() => {
                 push({
                   pathname: "/payment",
