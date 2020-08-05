@@ -135,7 +135,7 @@ const Footer = React.forwardRef((props, ref) => {
           <i className="fa fa-facebook fa-lg white-text" />
         </a>
         <a
-          href="https://instagram.com/schoolxacademy?igshid=1i5sc0z99ebt8"
+          href="https://www.instagram.com/schoolxpk/"
           target="_blank"
           className={`${classes.socialLink} ml-4`}
         >

@@ -51,17 +51,34 @@ const Cart = () => {
   );
   useEffect(() => {
     if (data && data["findEnrollment"]) {
-      setCartItems(data["findEnrollment"]);
-      console.log("CART", data["findEnrollment"]);
+      const copyOfCart = data["findEnrollment"].reduce((p, c) => {
+        p.push({ ...c, selected: true });
+        return p;
+      }, []);
+      setCartItems(copyOfCart);
+      console.log("CART", copyOfCart);
     }
   }, [data]);
 
   const totalToPay = cartItems.reduce(
-    (p, c) => p + parseInt(c.Course.price),
+    (p, c) => (c.selected ? p + parseInt(c.Course.price) : p),
     0
   );
+  const payForProduct = cartItems.reduce((p, c) => {
+    c.selected && p.push(c._id);
+    return p;
+  }, []);
+  console.log("tobePay", payForProduct);
   return (
-    <div style={{ padding: 15,minHeight:'calc(100vh - 114px)'}}>
+    <div
+      style={{
+        padding: 15,
+        minHeight: "calc(100vh - 114px)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <div style={{ marginBottom: 10 }}>{`${
         cartItems.length
       } Course${cartItems.length > 1 && "s"} in Cart`}</div>
@@ -108,7 +125,19 @@ const Cart = () => {
               variant="contained"
               color={"secondary"}
               onClick={() => {
-                push("/payment");
+                push({
+                  pathname: "/payment",
+                  query: {
+                    amount:
+                      totalToPay % 1 === 0
+                        ? totalToPay + ".0"
+                        : totalToPay + "",
+                    products: payForProduct.reduce(
+                      (p, c, idx) => p + (idx ? "," + c : c),
+                      ""
+                    ),
+                  },
+                });
               }}
             >
               CHECK OUT

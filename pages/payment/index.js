@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Payment = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  const { amount, products } = query;
   const classes = useStyles();
   const [cartItems, setCartItems] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -89,14 +90,15 @@ const Payment = () => {
     (p, c) => p + parseInt(c.Course.price),
     0
   );
-  const products = cartItems.reduce((p, c) => {
-    p.push(c._id);
-    return p;
-  }, []);
+  // const products = cartItems.reduce((p, c) => {
+  //   p.push(c._id);
+  //   return p;
+  // }, []);
+  console.log("products", products);
   return (
     <div style={{ padding: 15 }}>
       <div style={{ marginBottom: 10 }}>{`Select payment method`}</div>
-      <div> {`To pay: Rs ${totalToPay}`}</div>
+      <div> {`To pay: Rs ${amount}`}</div>
       <div
         style={{
           display: "flex",
@@ -124,15 +126,16 @@ const Payment = () => {
                 });
                 if (name === "Credit/Debit Card") {
                   posttoEasyPAisa({
-                    amount:
-                      totalToPay % 1 === 0
-                        ? totalToPay + ".0"
-                        : totalToPay + "",
+                    // amount:
+                    //   totalToPay % 1 === 0
+                    //     ? totalToPay + ".0"
+                    //     : totalToPay + "",
+                    amount,
                     pgwId: _id,
                     pgwName: name,
                     status: "initiated",
                     payment_status: "initiated",
-                    products,
+                    products: products.split(","),
                   })
                     .then(({ data }) => {
                       if (data && data.merchantHashedReq) {
