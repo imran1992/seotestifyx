@@ -46,7 +46,7 @@ const PaymentEasyPaisa = () => {
     } else {
       console.log("Query", query);
     }
-  }, []);
+  }, [query]);
   return (
     <div>
       <div className={classes.textBox}>Confirmed</div>
