@@ -507,26 +507,28 @@ const DashboardHeader = (props) => {
                       alt="profile"
                     />
                   </a>
-                  {dataX && dataX["findEnrollment"] && dataX["findEnrollment"].length&&(
-                    <div
-                      style={{
-                        position: "absolute",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        right: 4,
-                        top: 4,
-                        zindex: 3,
-                        backgroundColor: "red",
-                        width: 22,
-                        height: 22,
-                        borderRadius: 11,
-                        color: "#fff",
-                      }}
-                    >
-                      {dataX["findEnrollment"].length}
-                    </div>
-                  )}
+                  {dataX &&
+                    dataX["findEnrollment"] === undefined &&
+                    dataX["findEnrollment"].length !== 0 && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          right: 4,
+                          top: 4,
+                          zindex: 3,
+                          backgroundColor: "red",
+                          width: 22,
+                          height: 22,
+                          borderRadius: 11,
+                          color: "#fff",
+                        }}
+                      >
+                        {dataX["findEnrollment"].length}
+                      </div>
+                    )}
                 </li>
                 <li className="nav-item avatar dropdown">
                   <a
