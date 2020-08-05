@@ -176,7 +176,32 @@ const DashboardHeader = (props) => {
 }
 `;
   const { loading, data } = useQuery(gql(CLASSES_QUERY));
-
+  const { data: dataX, loading: loadingX } = useQuery(
+    gql`
+      {
+        findEnrollment(query: { userId: "${user._id}" }) {
+          _id
+          name
+          phone
+          validUpTo
+          createdAt
+          Course {
+            name
+            price
+            image_url
+            description
+          }
+        }
+      }
+    `,
+    {
+      variables: {
+        skip: 0,
+        first: 10,
+      },
+      notifyOnNetworkStatusChange: true,
+    }
+  );
   useEffect(() => {
     if (
       data &&
@@ -468,7 +493,10 @@ const DashboardHeader = (props) => {
                     <span className="counter">{user.notificationCount}</span>
                   )}
                 </li> */}
-                <li className="nav-item avatar dropdown">
+                <li
+                  className="nav-item avatar dropdown"
+                  style={{ position: "relative" }}
+                >
                   <a
                     className="nav-link dropdown-toggle waves-effect profile"
                     href="/cart"
@@ -479,6 +507,26 @@ const DashboardHeader = (props) => {
                       alt="profile"
                     />
                   </a>
+                  {dataX && dataX["findEnrollment"] && dataX["findEnrollment"].length&&(
+                    <div
+                      style={{
+                        position: "absolute",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        right: 4,
+                        top: 4,
+                        zindex: 3,
+                        backgroundColor: "red",
+                        width: 22,
+                        height: 22,
+                        borderRadius: 11,
+                        color: "#fff",
+                      }}
+                    >
+                      {dataX["findEnrollment"].length}
+                    </div>
+                  )}
                 </li>
                 <li className="nav-item avatar dropdown">
                   <a
