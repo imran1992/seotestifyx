@@ -85,11 +85,14 @@ const Payment = () => {
     }
   }, [data]);
 
-  // const totalToPay = cartItems.reduce(
-  //   (p, c) => p + parseInt(c.Course.price),
-  //   0
-  // );
-  const totalToPay = 100;
+  const totalToPay = cartItems.reduce(
+    (p, c) => p + parseInt(c.Course.price),
+    0
+  );
+  const products = cartItems.reduce((p, c) => {
+    p.push(c._id);
+    return p;
+  }, []);
   return (
     <div style={{ padding: 15 }}>
       <div style={{ marginBottom: 10 }}>{`Select payment method`}</div>
@@ -110,13 +113,26 @@ const Payment = () => {
               color={"secondary"}
               variant="outlined"
               onClick={() => {
+                console.log("Data2Go", {
+                  amount:
+                    totalToPay % 1 === 0 ? totalToPay + ".0" : totalToPay + "",
+                  pgwId: _id,
+                  pgwName: name,
+                  status: "initiated",
+                  payment_status: "initiated",
+                  products,
+                });
                 if (name === "Credit/Debit Card") {
                   posttoEasyPAisa({
-                    orderRefNum: "123456",
                     amount:
                       totalToPay % 1 === 0
                         ? totalToPay + ".0"
                         : totalToPay + "",
+                    pgwId: _id,
+                    pgwName: name,
+                    status: "initiated",
+                    payment_status: "initiated",
+                    products,
                   })
                     .then(({ data }) => {
                       if (data && data.merchantHashedReq) {
@@ -148,15 +164,6 @@ const Payment = () => {
                     })
                     .catch((e) => {});
                 }
-                // postOrder({
-                //   cartId: "5f27d0278b35546ca90e9b0a",
-                //   userId: "5f27d0278b35546ca90e9b0a",
-                //   pgwId: _id,
-                //   pgwName: name,
-                //   amount: totalToPay,
-                //   status: "initiated",
-                //   payment_status: "initiated",
-                // }).then((Re)=>{console.log('Res',Re)});
               }}
             >
               {name}

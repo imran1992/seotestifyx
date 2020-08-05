@@ -2,7 +2,7 @@ import React from "react";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 
-export default ({ notifMessage, notifMessageType, setNotifMessage }) => {
+const Notify = ({ notifMessage, notifMessageType, setNotifMessage }) => {
   return (
     <Snackbar
       open={!!notifMessage}
@@ -19,3 +19,4 @@ export default ({ notifMessage, notifMessageType, setNotifMessage }) => {
     </Snackbar>
   );
 };
+export default Notify;

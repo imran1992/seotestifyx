@@ -5,7 +5,7 @@
 /* eslint-disable react/no-danger */
 import React, { Fragment } from "react";
 
-export default () => (
+const FBPixel = () => (
   <Fragment>
     <script
       dangerouslySetInnerHTML={{
@@ -18,14 +18,15 @@ export default () => (
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '242180340146283');
-      fbq('track', 'PageView');`
+      fbq('track', 'PageView');`,
       }}
     />
     <noscript
       dangerouslySetInnerHTML={{
         __html: `<img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=242180340146283&ev=PageView&noscript=1" />`
+      src="https://www.facebook.com/tr?id=242180340146283&ev=PageView&noscript=1" />`,
       }}
     />
   </Fragment>
 );
+export default FBPixel;

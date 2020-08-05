@@ -123,9 +123,6 @@ const APP = ({ Component, pageProps, router }) => {
                 : ""
             }
           >
-            {/* {!Arr.includes(router.route.split("/")[1]) &&
-                !Arr.includes(router.route.split("/")[2]) && (
-                  )} */}
             {router.route != "/online-class/live/[slug]" ? (
               <DashboardHeader />
             ) : null}
@@ -150,9 +147,6 @@ const APP = ({ Component, pageProps, router }) => {
                   : ""
               }
             >
-              {/* {!Arr.includes(router.route.split("/")[1]) &&
-                !Arr.includes(router.route.split("/")[2]) && (
-                  )} */}
               {router.route != "/online-class/live/[slug]" ? (
                 <DashboardHeader />
               ) : null}

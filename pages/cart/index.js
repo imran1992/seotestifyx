@@ -68,11 +68,21 @@ const Cart = () => {
         return (
           <div key={_id} className={classes.cartItem}>
             <div style={{ width: 600, flexDirection: "row" }}>
-              <img src={image_url} style={{ width: 100, marginRight: 10 }} />
+              <img
+                src={image_url ? image_url : "/images/mathematics0.jpg"}
+                style={{
+                  width: 100,
+                  marginRight: 10,
+                  height: 60,
+                  borderRadius: 3,
+                }}
+              />
               <span>{name}</span>
             </div>
             <div style={{ width: 300 }}></div>
-            <div style={{ width: 250 }}>{`Rs ${price}`}</div>
+            <div style={{ width: 250 }}>
+              {parseInt(price) ? `Rs ${price}` : "Free"}
+            </div>
           </div>
         );
       })}

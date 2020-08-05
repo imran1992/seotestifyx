@@ -2,9 +2,7 @@ import React from "react";
 
 const pages = new Array(18).fill(null);
 
-export default (props) => {
-  const { showOnlyLoader, size } = props;
-
+const LOader = ({ showOnlyLoader, size }) => {
   const onlyLoader = (
     <div className={`myLoader ${size === "small" ? "loaderSmall" : ""}`}>
       <div className="inner">
@@ -23,3 +21,4 @@ export default (props) => {
   if (showOnlyLoader) return onlyLoader;
   else return <div className="loader">{onlyLoader}</div>;
 };
+export default LOader;

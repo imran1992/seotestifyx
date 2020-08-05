@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-export default () => {
+const HeadTag = () => {
   return (
     <Fragment>
       <script
@@ -13,9 +13,10 @@ export default () => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-147246396-1');
-          `
+          `,
         }}
       />
     </Fragment>
   );
 };
+export default HeadTag;
