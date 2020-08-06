@@ -508,7 +508,7 @@ const DashboardHeader = (props) => {
                     />
                   </a>
                   {dataX &&
-                    dataX["findEnrollment"] === undefined &&
+                    dataX["findEnrollment"] !== undefined &&
                     dataX["findEnrollment"].length !== 0 && (
                       <div
                         style={{
