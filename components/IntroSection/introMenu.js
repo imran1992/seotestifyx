@@ -250,7 +250,7 @@ const IntroSection = (props) => {
               className={`${classes.menu_item}`}
               style={{ color: purple[700] }}
             >
-              Porgrams
+              Programs
             </p>
             {classGroups &&
               Object.keys(classGroups).map((group_name, i) => {
