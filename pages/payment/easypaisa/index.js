@@ -51,14 +51,14 @@ const PaymentEasyPaisa = () => {
       } else if (amount && merchantHashedReq && orderRefNum) {
         form_ep.action = easyPaisaUrl + "Index.jsf";
         ObjectOp = {
-          autoRedirect: parseInt(autoRedirect),
+          autoRedirect,
           expiryDate,
           amount,
           orderRefNum,
           paymentMethod,
           postBackURL,
           merchantHashedReq,
-          storeId: parseInt(storeId),
+          storeId,
         };
       }
       for (let key_ep in ObjectOp) {
