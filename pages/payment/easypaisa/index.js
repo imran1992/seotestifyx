@@ -37,6 +37,7 @@ const PaymentEasyPaisa = () => {
   } = query;
 
   useEffect(() => {
+    console.log("started executing");
     if (postBackURL) {
       const form_ep = document.createElement("form");
       form_ep.method = "POST";
