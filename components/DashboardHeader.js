@@ -176,32 +176,32 @@ const DashboardHeader = (props) => {
 }
 `;
   const { loading, data } = useQuery(gql(CLASSES_QUERY));
-  // const { data: dataX, loading: loadingX } = useQuery(
-  //   gql`
-  //     {
-  //       findEnrollment(query: { userId: "${user._id}" }) {
-  //         _id
-  //         name
-  //         phone
-  //         validUpTo
-  //         createdAt
-  //         Course {
-  //           name
-  //           price
-  //           image_url
-  //           description
-  //         }
-  //       }
-  //     }
-  //   `,
-  //   {
-  //     variables: {
-  //       skip: 0,
-  //       first: 10,
-  //     },
-  //     notifyOnNetworkStatusChange: true,
-  //   }
-  // );
+  const { data: dataX, loading: loadingX } = useQuery(
+    gql`
+      {
+        findEnrollment(query: { userId: "${user._id ? user._id : 0}" }) {
+          _id
+          name
+          phone
+          validUpTo
+          createdAt
+          Course {
+            name
+            price
+            image_url
+            description
+          }
+        }
+      }
+    `,
+    {
+      variables: {
+        skip: 0,
+        first: 10,
+      },
+      notifyOnNetworkStatusChange: true,
+    }
+  );
   useEffect(() => {
     if (
       data &&
@@ -507,7 +507,7 @@ const DashboardHeader = (props) => {
                       alt="profile"
                     />
                   </a>
-                  {/* {dataX &&
+                  {dataX &&
                     dataX["findEnrollment"] !== undefined &&
                     dataX["findEnrollment"].length !== 0 && (
                       <div
@@ -528,7 +528,7 @@ const DashboardHeader = (props) => {
                       >
                         {dataX["findEnrollment"].length}
                       </div>
-                    )} */}
+                    )}
                 </li>
                 <li className="nav-item avatar dropdown">
                   <a
