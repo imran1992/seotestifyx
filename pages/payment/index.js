@@ -24,32 +24,6 @@ const Payment = () => {
   const classes = useStyles();
   const [cartItems, setCartItems] = useState([]);
   const [paymentMethods, setPaymentMethods] = useState([]);
-  // const { error, data, fetchMore, networkStatus, client, loading } = useQuery(
-  //   gql`
-  //     {
-  //       findEnrollment(query: { userId: "5f27d0278b35546ca90e9b0a" }) {
-  //         _id
-  //         name
-  //         phone
-  //         validUpTo
-  //         createdAt
-  //         Course {
-  //           name
-  //           price
-  //           image_url
-  //           description
-  //         }
-  //       }
-  //     }
-  //   `,
-  //   {
-  //     variables: {
-  //       skip: 0,
-  //       first: 10,
-  //     },
-  //     notifyOnNetworkStatusChange: true,
-  //   }
-  // );
 
   const { data: PMData, loading: PMLoading } = useQuery(
     gql`
@@ -74,25 +48,9 @@ const Payment = () => {
   );
   useEffect(() => {
     if (PMData) setPaymentMethods(PMData["findPaymentmethod"]);
-    console.log("PMData", PMData);
+   // console.log("PMData", PMData);
   }, [PMData]);
 
-  // useEffect(() => {
-  //   if (data && data["findEnrollment"]) {
-  //     setCartItems(data["findEnrollment"]);
-  //     console.log("CART", data["findEnrollment"]);
-  //   }
-  // }, [data]);
-
-  // const totalToPay = cartItems.reduce(
-  //   (p, c) => p + parseInt(c.Course.price),
-  //   0
-  // );
-  // const products = cartItems.reduce((p, c) => {
-  //   p.push(c._id);
-  //   return p;
-  // }, []);
-  console.log("products", products);
   return (
     <div style={{ padding: 15 }}>
       <div style={{ marginBottom: 10 }}>{`Select payment method`}</div>
@@ -114,16 +72,12 @@ const Payment = () => {
               variant="outlined"
               onClick={() => {
                 console.log("Data2Go", {
-                  // amount:
-                  //   totalToPay % 1 === 0
-                  //     ? totalToPay + ".0"
-                  //     : totalToPay + "",
                   amount,
                   pgwId: _id,
                   pgwName: name,
                   status: "initiated",
                   payment_status: "initiated",
-                  products,
+                  products:products.split(","),
                 });
                 if (name === "Credit/Debit Card") {
                   posttoEasyPAisa({
