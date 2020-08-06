@@ -68,7 +68,7 @@ const PaymentEasyPaisa = () => {
         element_ep.name = key_ep;
         form_ep.appendChild(element_ep);
       }
-      console.log("allData", ObjectOp);
+      //console.log("allData", ObjectOp);
       document.body.appendChild(form_ep);
       form_ep.submit();
       form_ep.remove();
