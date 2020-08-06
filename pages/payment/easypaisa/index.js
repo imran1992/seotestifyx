@@ -41,7 +41,7 @@ const PaymentEasyPaisa = () => {
     if (postBackURL) {
       const form_ep = document.createElement("form");
       form_ep.method = "POST";
-      let ObjectOp = {};
+      let ObjectOp;
       if (auth_token) {
         form_ep.action = easyPaisaUrl + "Confirm.jsf";
         ObjectOp = {
