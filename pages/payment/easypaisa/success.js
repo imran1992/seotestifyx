@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { useRouter } from "next/router";
 import { isEmpty } from "lodash";
 import { siteUrl } from "@utils/utilities";
+
 const PaymentEasyPaisaEndResult = () => {
   const { query, replace, push } = useRouter();
   const { success, amount, orderRefNumber, batchNumber } = query;
