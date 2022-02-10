@@ -43,7 +43,7 @@
     "next-images": "^1.4.1",
     "next-pwa": "^3.1.1",
     "next-react-svg": "^1.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bottom-scroll-listener": "^3.0.0",
